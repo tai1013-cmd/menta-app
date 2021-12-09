@@ -1,8 +1,7 @@
 package menta.app.model.skill;
+import lombok.Getter;
 
-import lombok.Data;
-
-@Data
+@Getter
 public class TestModel {
 	private String test = "";
 }

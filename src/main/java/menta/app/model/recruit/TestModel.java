@@ -1,7 +1,7 @@
 package menta.app.model.recruit;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+@Getter
 public class TestModel {
 	private String test = "";
 }
