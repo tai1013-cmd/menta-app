@@ -1,6 +1,6 @@
 package menta.app.service.tag;
 
-import menta.app.service.impl.ITestService;
+import menta.app.service.iservice.ITestService;
 
 public class TestService implements ITestService {
 
