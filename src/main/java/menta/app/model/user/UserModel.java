@@ -1,6 +1,7 @@
 package menta.app.model.user;
 import lombok.Getter;
 import lombok.Setter;
+import menta.app.model.user.exception.UserMailAddressFormatException;
 import menta.app.model.user.exception.UserPasswordFormatException;
 import menta.app.model.user.exception.UserPropertyMaxLengthException;
 import menta.app.model.user.exception.UserPropertyMinLengthException;
@@ -33,9 +34,13 @@ public class UserModel {
 	private final static Integer INTRODUCTION_MAX_LENGTH = 2000;
 
 	/**
-	 * 自己紹介：フォーマット英数字それぞれ最低1文字以上
+	 * メールアドレス：メールアドレス正規表現
 	 */
-	private final static String INTRODUCTION_FORMAT = "^(?=.*[a-zA-Z])(?=.*[0-9]).*";
+	private final static String MAILADDRESS_FORMAT = "^[\\w!#%&’/=~`\\*\\+\\?\\{\\}\\^\\$\\-\\|]+(\\.[\\w!#%&’/=~`\\*\\+\\?\\{\\}\\^\\$\\-\\|]+)*@[\\w!#%&’/=~`\\*\\+\\?\\{\\}\\^\\$\\-\\|]+(\\.[\\w!#%&’/=~`\\*\\+\\?\\{\\}\\^\\$\\-\\|]+)*$";
+	/**
+	 * パスワード：英数字それぞれ最低1文字以上正規表現
+	 */
+	private final static String PASSWORD_FORMAT = "^(?=.*[a-zA-Z])(?=.*[0-9]).*";
 	/**
 	 *  コンストラクタ
 	 *  @param userId ユーザーID
@@ -128,6 +133,10 @@ public class UserModel {
 		if(mailAddress.length() > MAILADDRESS_MAX_LENGTH) {
 			throw new UserPropertyMaxLengthException(errMsglabel, mailAddress);
 		}
+		// フォーマットチェック
+		if(!mailAddress.matches(MAILADDRESS_FORMAT)) {
+			throw new UserMailAddressFormatException(mailAddress);
+		}
 	}
 	
 	/**
@@ -144,6 +153,10 @@ public class UserModel {
 		// 桁数チェック
 		if(password.length() < PASSWORD_MIN_LENGTH) {
 			throw new UserPropertyMinLengthException(errMsglabel, password);
+		}
+		// フォーマットチェック
+		if(!password.matches(PASSWORD_FORMAT)) {
+			throw new UserPasswordFormatException(password);
 		}
 	}
 	
@@ -185,10 +198,6 @@ public class UserModel {
 		// 桁数チェック
 		if(selfIntro.length() > INTRODUCTION_MAX_LENGTH) {
 			throw new UserPropertyMaxLengthException(errMsglabel, selfIntro);
-		}
-		// フォーマットチェック
-		if(!selfIntro.matches(INTRODUCTION_FORMAT)) {
-			throw new UserPasswordFormatException(selfIntro);
 		}
 	}
 	
