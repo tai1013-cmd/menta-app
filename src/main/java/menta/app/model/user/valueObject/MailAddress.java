@@ -33,7 +33,7 @@ public class MailAddress {
 	 *  メールアドレスチェック
 	 *  @param mailAddress メールアドレス
 	 */
-	public void checkMailAddress(String mailAddress) {
+	private void checkMailAddress(String mailAddress) {
 		
 		String errMsglabel = "メールアドレス";
 		// 必須チェック

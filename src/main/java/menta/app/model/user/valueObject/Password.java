@@ -34,7 +34,7 @@ public class Password {
 	 *  パスワードチェック
 	 *  @param password パスワード
 	 */
-	public void checkPassword(String password) {
+	private void checkPassword(String password) {
 		
 		String errMsglabel = "パスワード";
 		// 必須チェック

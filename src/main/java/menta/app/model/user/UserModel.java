@@ -87,7 +87,7 @@ public class UserModel {
 	 *  ユーザーIDチェック
 	 *  @param userId ユーザーID
 	 */
-	public void checkUserId(String userId) {
+	private void checkUserId(String userId) {
 		
 		String errMsglabel = "ユーザーID";
 		// 必須チェック
@@ -100,7 +100,7 @@ public class UserModel {
 	 *  自己紹介文チェック
 	 *  @param selfIntro 自己紹介文
 	 */
-	public void checkSelfIntro(String selfIntro) {
+	private void checkSelfIntro(String selfIntro) {
 		
 		String errMsglabel = "自己紹介文";
 		// 必須チェック

@@ -32,7 +32,7 @@ public class FullName {
 	 *  @param sei 姓
 	 *  @param mei 名
 	 */
-	public void checkNameFull(String sei, String mei) {
+	private void checkNameFull(String sei, String mei) {
 		
 		String errMsglabel1 = "氏名（姓）";
 		String errMsglabel2 = "氏名（名）";
