@@ -1,74 +1,47 @@
 package menta.app.model.user;
 import lombok.Getter;
-import lombok.Setter;
-import menta.app.model.user.exception.UserMailAddressFormatException;
-import menta.app.model.user.exception.UserPasswordFormatException;
 import menta.app.model.user.exception.UserPropertyMaxLengthException;
-import menta.app.model.user.exception.UserPropertyMinLengthException;
 import menta.app.model.user.exception.UserPropertyNullException;
+import menta.app.model.user.valueObject.FullName;
+import menta.app.model.user.valueObject.MailAddress;
+import menta.app.model.user.valueObject.Password;
 
 @Getter
 public class UserModel {
 	private String userId = "";
-	private String mailadress = "";
-	private String password = "";
-	private String sei = "";
-	private String mei = "";
+	private MailAddress mailadress = null;
+	private Password password = null;
+	private FullName fullName = null;
 	private String selfIntro = "";
 	
-	/**
-	 * メールアドレス：最大文字数
-	 */
-	private final static Integer MAILADDRESS_MAX_LENGTH = 255;
-	/**
-	 * パスワード：最小文字数
-	 */
-	private final static Integer PASSWORD_MIN_LENGTH = 12;
-	/**
-	 * 氏名：最大文字数
-	 */
-	private final static Integer FULL_NAME_MAX_LENGTH = 255;
 	/**
 	 * 自己紹介：最大文字数
 	 */
 	private final static Integer INTRODUCTION_MAX_LENGTH = 2000;
 
 	/**
-	 * メールアドレス：メールアドレス正規表現
-	 */
-	private final static String MAILADDRESS_FORMAT = "^[\\w!#%&’/=~`\\*\\+\\?\\{\\}\\^\\$\\-\\|]+(\\.[\\w!#%&’/=~`\\*\\+\\?\\{\\}\\^\\$\\-\\|]+)*@[\\w!#%&’/=~`\\*\\+\\?\\{\\}\\^\\$\\-\\|]+(\\.[\\w!#%&’/=~`\\*\\+\\?\\{\\}\\^\\$\\-\\|]+)*$";
-	/**
-	 * パスワード：英数字それぞれ最低1文字以上正規表現
-	 */
-	private final static String PASSWORD_FORMAT = "^(?=.*[a-zA-Z])(?=.*[0-9]).*";
-	/**
 	 *  コンストラクタ
 	 *  @param userId ユーザーID
 	 *  @param mailadress メールアドレス
 	 *  @param password パスワード
-	 *  @param sei 氏名（姓）
-	 *  @param mei 氏名（名）
+	 *  @param fullName 氏名（姓・名）
 	 *  @param selfIntro 自己紹介
 	 */
 	public UserModel(String userId,
-			String mailadress,
-			String password,
-			String sei,
-			String mei,
+			MailAddress mailadress,
+			Password password,
+			FullName fullName,
 			String selfIntro
 			) {
 		
 		// チェック
-		checkMailAddress(mailadress);
-		checkPassword(password);
-		checkNameFull(sei, mei);
+		checkUserId(userId);
 		checkSelfIntro(selfIntro);
 		
 		this.userId = userId;
 		this.mailadress = mailadress;
 		this.password = password;
-		this.sei = sei;
-		this.mei = mei;
+		this.fullName = fullName;
 		this.selfIntro = selfIntro;
 	}
 	
@@ -76,10 +49,8 @@ public class UserModel {
 	 *  メールアドレスを設定する
 	 *  @param mailadress メールアドレス
 	 */
-	public void setMailaddress(String mailadress) {
+	public void setMailaddress(MailAddress mailadress) {
 		
-		// チェック
-		checkMailAddress(mailadress);
 		this.mailadress = mailadress;
 	}
 	
@@ -87,24 +58,18 @@ public class UserModel {
 	 *  パスワードを設定する
 	 *  @param mailadress メールアドレス
 	 */
-	public void setPassword(String password) {
-		
-		// チェック
-		checkPassword(password);
+	public void setPassword(Password password) {
+
 		this.password = password;
 	}
 	
 	/**
 	 *  氏名を設定する
-	 *  @param sei 姓
-	 *  @param mei 名
+	 *  @param fullName 氏名
 	 */
-	public void setNameFull(String sei, String mei) {
+	public void setNameFull(FullName fullName) {
 		
-		// チェック
-		checkNameFull(sei, mei);
-		this.sei = sei;
-		this.mei = mei;
+		this.fullName = fullName;
 	}
 	
 	/**
@@ -119,68 +84,15 @@ public class UserModel {
 	}
 	
 	/**
-	 *  メールアドレスチェック
-	 *  @param mailAddress メールアドレス
+	 *  ユーザーIDチェック
+	 *  @param userId ユーザーID
 	 */
-    private void checkMailAddress(String mailAddress) {
+	public void checkUserId(String userId) {
 		
-		String errMsglabel = "メールアドレス";
+		String errMsglabel = "ユーザーID";
 		// 必須チェック
-		if(mailAddress == null || mailAddress.length() == 0) {
+		if(userId == null || userId.length() == 0) {
 			throw new UserPropertyNullException(errMsglabel);
-		}
-		// 桁数チェック
-		if(mailAddress.length() > MAILADDRESS_MAX_LENGTH) {
-			throw new UserPropertyMaxLengthException(errMsglabel, mailAddress);
-		}
-		// フォーマットチェック
-		if(!mailAddress.matches(MAILADDRESS_FORMAT)) {
-			throw new UserMailAddressFormatException(mailAddress);
-		}
-	}
-	
-	/**
-	 *  パスワードチェック
-	 *  @param password パスワード
-	 */
-	private void checkPassword(String password) {
-		
-		String errMsglabel = "パスワード";
-		// 必須チェック
-		if(password == null || password.length() == 0) {
-			throw new UserPropertyNullException(errMsglabel);
-		}
-		// 桁数チェック
-		if(password.length() < PASSWORD_MIN_LENGTH) {
-			throw new UserPropertyMinLengthException(errMsglabel, password);
-		}
-		// フォーマットチェック
-		if(!password.matches(PASSWORD_FORMAT)) {
-			throw new UserPasswordFormatException(password);
-		}
-	}
-	
-	/**
-	 *  氏名チェック
-	 *  @param sei 姓
-	 *  @param mei 名
-	 */
-	private void checkNameFull(String sei, String mei) {
-		
-		String errMsglabel1 = "氏名（姓）";
-		String errMsglabel2 = "氏名（名）";
-		String errMsglabel3 = "氏名（姓・名）";
-		// 必須チェック
-		if(sei == null || sei.length() == 0) {
-			throw new UserPropertyNullException(errMsglabel1);
-		}
-		if(mei == null || mei.length() == 0) {
-			throw new UserPropertyNullException(errMsglabel2);
-		}
-		// 桁数チェック
-		String fullName = sei + mei;
-		if(fullName.length() > FULL_NAME_MAX_LENGTH) {
-			throw new UserPropertyMaxLengthException(errMsglabel3, fullName);
 		}
 	}
 	
@@ -188,7 +100,7 @@ public class UserModel {
 	 *  自己紹介文チェック
 	 *  @param selfIntro 自己紹介文
 	 */
-	private void checkSelfIntro(String selfIntro) {
+	public void checkSelfIntro(String selfIntro) {
 		
 		String errMsglabel = "自己紹介文";
 		// 必須チェック
