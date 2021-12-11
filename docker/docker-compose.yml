@@ -1,0 +1,19 @@
+version: '3'
+services:
+    db:
+        image: postgres:13
+        container_name: postgresdb11
+        ports:
+            - 5440:5432
+        volumes:
+            - menta-db-store:/var/lib/postgresql/data
+        environment:
+            LANG: ja_JP.utf8
+            POSTGRES_USER: menta
+            POSTGRES_PASSWORD: menta
+            POSTGRES_DB: mentadb
+        restart: always
+
+volumes:
+  menta-db-store:
+    driver: local
