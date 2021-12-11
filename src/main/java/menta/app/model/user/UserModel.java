@@ -8,7 +8,7 @@ import menta.app.model.user.exception.UserPropertyNullException;
 
 @Getter
 public class UserModel {
-	
+	private String userId = "";
 	private String mailadress = "";
 	private String password = "";
 	private String sei = "";
@@ -38,13 +38,15 @@ public class UserModel {
 	private final static String INTRODUCTION_FORMAT = "^(?=.*[a-zA-Z])(?=.*[0-9]).*";
 	/**
 	 *  コンストラクタ
+	 *  @param userId ユーザーID
 	 *  @param mailadress メールアドレス
 	 *  @param password パスワード
 	 *  @param sei 氏名（姓）
 	 *  @param mei 氏名（名）
 	 *  @param selfIntro 自己紹介
 	 */
-	public UserModel(String mailadress,
+	public UserModel(String userId,
+			String mailadress,
 			String password,
 			String sei,
 			String mei,
@@ -52,10 +54,17 @@ public class UserModel {
 			) {
 		
 		// チェック
-		checkNameFull(sei, mei);
 		checkMailAddress(mailadress);
 		checkPassword(password);
+		checkNameFull(sei, mei);
 		checkSelfIntro(selfIntro);
+		
+		this.userId = userId;
+		this.mailadress = mailadress;
+		this.password = password;
+		this.sei = sei;
+		this.mei = mei;
+		this.selfIntro = selfIntro;
 	}
 	
 	/**
@@ -110,14 +119,14 @@ public class UserModel {
 	 */
     private void checkMailAddress(String mailAddress) {
 		
-		String label = "メールアドレス";
+		String errMsglabel = "メールアドレス";
 		// 必須チェック
-		if(mailAddress == null) {
-			throw new UserPropertyNullException(label);
+		if(mailAddress == null || mailAddress.length() == 0) {
+			throw new UserPropertyNullException(errMsglabel);
 		}
 		// 桁数チェック
 		if(mailAddress.length() > MAILADDRESS_MAX_LENGTH) {
-			throw new UserPropertyMaxLengthException(label);
+			throw new UserPropertyMaxLengthException(errMsglabel, mailAddress);
 		}
 	}
 	
@@ -127,14 +136,14 @@ public class UserModel {
 	 */
 	private void checkPassword(String password) {
 		
-		String labelPassword = "パスワード";
+		String errMsglabel = "パスワード";
 		// 必須チェック
-		if(password == null) {
-			throw new UserPropertyNullException(labelPassword);
+		if(password == null || password.length() == 0) {
+			throw new UserPropertyNullException(errMsglabel);
 		}
 		// 桁数チェック
 		if(password.length() < PASSWORD_MIN_LENGTH) {
-			throw new UserPropertyMinLengthException(labelPassword);
+			throw new UserPropertyMinLengthException(errMsglabel, password);
 		}
 	}
 	
@@ -145,20 +154,20 @@ public class UserModel {
 	 */
 	private void checkNameFull(String sei, String mei) {
 		
-		String labelSei = "氏名（姓）";
-		String labelMei = "氏名（名）";
-		String labelFull = "氏名（姓・名）";
+		String errMsglabel1 = "氏名（姓）";
+		String errMsglabel2 = "氏名（名）";
+		String errMsglabel3 = "氏名（姓・名）";
 		// 必須チェック
-		if(sei == null) {
-			throw new UserPropertyNullException(labelSei);
+		if(sei == null || sei.length() == 0) {
+			throw new UserPropertyNullException(errMsglabel1);
 		}
-		if(mei == null) {
-			throw new UserPropertyNullException(labelMei);
+		if(mei == null || mei.length() == 0) {
+			throw new UserPropertyNullException(errMsglabel2);
 		}
 		// 桁数チェック
 		String fullName = sei + mei;
 		if(fullName.length() > FULL_NAME_MAX_LENGTH) {
-			throw new UserPropertyMaxLengthException(labelFull);
+			throw new UserPropertyMaxLengthException(errMsglabel3, fullName);
 		}
 	}
 	
@@ -168,18 +177,18 @@ public class UserModel {
 	 */
 	private void checkSelfIntro(String selfIntro) {
 		
-		String labelSelfIntro = "自己紹介文";
+		String errMsglabel = "自己紹介文";
 		// 必須チェック
-		if(selfIntro == null) {
-			throw new UserPropertyNullException(selfIntro);
+		if(selfIntro == null || selfIntro.length() == 0) {
+			return;
 		}		
 		// 桁数チェック
 		if(selfIntro.length() > INTRODUCTION_MAX_LENGTH) {
-			throw new UserPropertyMaxLengthException(selfIntro);
+			throw new UserPropertyMaxLengthException(errMsglabel, selfIntro);
 		}
 		// フォーマットチェック
 		if(!selfIntro.matches(INTRODUCTION_FORMAT)) {
-			throw new UserPasswordFormatException();
+			throw new UserPasswordFormatException(selfIntro);
 		}
 	}
 	
