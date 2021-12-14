@@ -91,7 +91,7 @@ public class CareerModel {
 	
 	/**
 	 *  担当ユーザーチェック
-	 *  @param userModel 担当ユーザー
+	 *  @param referUser 担当ユーザー
 	 */
 	private void checkUserModel(UserModel referUser) {
 		
