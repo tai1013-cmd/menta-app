@@ -51,13 +51,13 @@ public class CareerModel {
 	
 	/**
 	 *  経歴IDチェック
-	 *  @param recruitId 経歴ID
+	 *  @param careerId 経歴ID
 	 */
-	private void checkCareerId(String recruitId) {
+	private void checkCareerId(String careerId) {
 		
 		String errMsglabel = "経歴ID";
 		// 必須チェック
-		if(recruitId == null || recruitId.length() == 0) {
+		if(careerId == null || careerId.length() == 0) {
 			throw new CareerPropertyNullException(errMsglabel);
 		}
 	}
