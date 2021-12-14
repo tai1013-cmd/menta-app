@@ -1,17 +1,17 @@
-package menta.app.model.recruit;
+package menta.app.model.career;
 import java.time.LocalDate;
 
 import lombok.Getter;
-import menta.app.model.recruit.exception.RecruitPropertyNullException;
-import menta.app.model.recruit.exception.RecruitYearFromToRelationshipException;
-import menta.app.model.recruit.exception.RecruitYearMaxException;
-import menta.app.model.recruit.exception.RecruitYearMinException;
+import menta.app.model.career.exception.CareerPropertyNullException;
+import menta.app.model.career.exception.CareerYearFromToRelationshipException;
+import menta.app.model.career.exception.CareerYearMaxException;
+import menta.app.model.career.exception.CareerYearMinException;
 import menta.app.model.user.UserModel;
 
 @Getter
-public class RecruitModel {
+public class CareerModel {
 	
-	private String recruitId = "";
+	private String careerId = "";
 	private String detail = "";
 	private Integer yearStart = null;
 	private Integer yearEnd = null;
@@ -24,13 +24,13 @@ public class RecruitModel {
 	
 	/**
 	 *  コンストラクタ
-	 *  @param recruitId 経歴ID
+	 *  @param careerId 経歴ID
 	 *  @param detail 詳細
 	 *  @param yearFrom　西暦FROM
 	 *  @param yearTo 西暦TO
 	 *  @param referUser　担当ユーザー
 	 */
-	public RecruitModel(String recruitId,
+	public CareerModel(String careerId,
 			String detail,
 			int yearStart,
 			int yearEnd,
@@ -38,11 +38,11 @@ public class RecruitModel {
 			) {
 		
 		// チェック
-		checkRecruitId(recruitId);
+		checkCareerId(careerId);
 		checkTerm(yearStart, yearEnd);
 		checkUserModel(referUser);
 		
-		this.recruitId = recruitId;
+		this.careerId = careerId;
 		this.detail = detail;
 		this.yearStart = yearStart;
 		this.yearEnd = yearEnd;
@@ -53,12 +53,12 @@ public class RecruitModel {
 	 *  経歴IDチェック
 	 *  @param recruitId 経歴ID
 	 */
-	private void checkRecruitId(String recruitId) {
+	private void checkCareerId(String recruitId) {
 		
 		String errMsglabel = "経歴ID";
 		// 必須チェック
 		if(recruitId == null || recruitId.length() == 0) {
-			throw new RecruitPropertyNullException(errMsglabel);
+			throw new CareerPropertyNullException(errMsglabel);
 		}
 	}
 	
@@ -70,22 +70,22 @@ public class RecruitModel {
 	private void checkTerm(int yearFrom, int yearTo) {
 		// 最小チェック
 		if(yearFrom < YEAR_FROM_MIN_VALUE) {
-			throw new RecruitYearMinException(yearFrom);
+			throw new CareerYearMinException(yearFrom);
 		}
 		if(yearTo < YEAR_FROM_MIN_VALUE) {
-			throw new RecruitYearMinException(yearTo);
+			throw new CareerYearMinException(yearTo);
 		}
 		// 最大チェック
 		LocalDate currentDate = LocalDate.now();
 		if(yearFrom > currentDate.getYear()) {
-			throw new RecruitYearMaxException(yearFrom);
+			throw new CareerYearMaxException(yearFrom);
 		}
 		if(yearTo > currentDate.getYear()) {
-			throw new RecruitYearMaxException(yearTo);
+			throw new CareerYearMaxException(yearTo);
 		}
 		// 大小チェック
 		if(yearTo > yearFrom) {
-			throw new RecruitYearFromToRelationshipException(yearFrom, yearTo);
+			throw new CareerYearFromToRelationshipException(yearFrom, yearTo);
 		}
 	}
 	
@@ -98,7 +98,7 @@ public class RecruitModel {
 		String errMsglabel = "担当ユーザー";
 		// 必須チェック
 		if(referUser == null) {
-			throw new RecruitPropertyNullException(errMsglabel);
+			throw new CareerPropertyNullException(errMsglabel);
 		}
 	}
 }
