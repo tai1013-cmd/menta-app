@@ -1,7 +1,7 @@
 package menta.app.model.valueObject;
+import java.util.UUID;
+
 import lombok.Getter;
-import menta.app.model.user.exception.UserPropertyMaxLengthException;
-import menta.app.model.user.exception.UserPropertyNullException;
 import menta.app.model.valueObject.exception.IdNullException;
 
 @Getter
@@ -11,20 +11,25 @@ public class Id {
 	
 	/**
 	 *  コンストラクタ
-	 *  @param id モデルID
+	 */
+	public Id() {
+		
+		// UUID生成
+		UUID uuid = UUID.randomUUID();
+		this.id = uuid.toString();
+	}
+	
+	/**
+	 *  コンストラクタ
+	 *  @param ID
 	 */
 	public Id(String id) {
 		
-		// チェック
+		//チェック
 		checkId(id);
 		this.id = id;
 	}
 	
-
-	/**
-	 *  IDチェック
-	 *  @param id モデルID
-	 */
 	private void checkId(String id) {
 		// 必須チェック
 		if(id == null || id.length() == 0) {
