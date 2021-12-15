@@ -2,7 +2,6 @@ package menta.app.model.career;
 import java.time.LocalDate;
 
 import lombok.Getter;
-import menta.app.model.career.exception.CareerPropertyNullException;
 import menta.app.model.career.exception.CareerYearFromToRelationshipException;
 import menta.app.model.career.exception.CareerYearMaxException;
 import menta.app.model.career.exception.CareerYearMinException;
@@ -15,7 +14,7 @@ public class CareerModel {
 	private String detail = "";
 	private Integer yearStart = null;
 	private Integer yearEnd = null;
-	private String referUserId = null;
+	private Id referUserId = null;
 
 	/**
 	 * 西暦FROM：最小年度
@@ -34,12 +33,11 @@ public class CareerModel {
 			String detail,
 			int yearStart,
 			int yearEnd,
-			String referUserId
+			Id referUserId
 			) {
 		
 		// チェック
 		checkTerm(yearStart, yearEnd);
-		checkReferUserId(referUserId);
 		
 		this.careerId = careerId;
 		this.detail = detail;
@@ -74,17 +72,5 @@ public class CareerModel {
 			throw new CareerYearFromToRelationshipException(yearFrom, yearTo);
 		}
 	}
-	
-	/**
-	 *  担当ユーザーIDチェック
-	 *  @param referUser 担当ユーザーID
-	 */
-	private void checkReferUserId(String referUserId) {
-		
-		String errMsglabel = "担当ユーザーID";
-		// 必須チェック
-		if(referUserId == null || referUserId.length() == 0) {
-			throw new CareerPropertyNullException(errMsglabel);
-		}
-	}
+
 }
