@@ -5,10 +5,11 @@ import menta.app.model.user.exception.UserPropertyNullException;
 import menta.app.model.user.valueObject.FullName;
 import menta.app.model.user.valueObject.MailAddress;
 import menta.app.model.user.valueObject.Password;
+import menta.app.model.valueObject.Id;
 
 @Getter
 public class UserModel {
-	private String userId = "";
+	private Id userId = null;
 	private MailAddress mailadress = null;
 	private Password password = null;
 	private FullName fullName = null;
@@ -27,7 +28,7 @@ public class UserModel {
 	 *  @param fullName 氏名（姓・名）
 	 *  @param selfIntro 自己紹介
 	 */
-	public UserModel(String userId,
+	public UserModel(Id userId,
 			MailAddress mailadress,
 			Password password,
 			FullName fullName,
@@ -35,7 +36,6 @@ public class UserModel {
 			) {
 		
 		// チェック
-		checkUserId(userId);
 		checkSelfIntro(selfIntro);
 		
 		this.userId = userId;
@@ -81,19 +81,6 @@ public class UserModel {
 		// チェック
 		checkSelfIntro(selfIntro);
 		this.selfIntro = selfIntro;
-	}
-	
-	/**
-	 *  ユーザーIDチェック
-	 *  @param userId ユーザーID
-	 */
-	private void checkUserId(String userId) {
-		
-		String errMsglabel = "ユーザーID";
-		// 必須チェック
-		if(userId == null || userId.length() == 0) {
-			throw new UserPropertyNullException(errMsglabel);
-		}
 	}
 	
 	/**

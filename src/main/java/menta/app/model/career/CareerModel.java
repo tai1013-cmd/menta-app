@@ -6,16 +6,16 @@ import menta.app.model.career.exception.CareerPropertyNullException;
 import menta.app.model.career.exception.CareerYearFromToRelationshipException;
 import menta.app.model.career.exception.CareerYearMaxException;
 import menta.app.model.career.exception.CareerYearMinException;
-import menta.app.model.user.UserModel;
+import menta.app.model.valueObject.Id;
 
 @Getter
 public class CareerModel {
 	
-	private String careerId = "";
+	private Id careerId = null;
 	private String detail = "";
 	private Integer yearStart = null;
 	private Integer yearEnd = null;
-	private UserModel referUser = null;
+	private String referUserId = null;
 
 	/**
 	 * 西暦FROM：最小年度
@@ -28,38 +28,24 @@ public class CareerModel {
 	 *  @param detail 詳細
 	 *  @param yearFrom　西暦FROM
 	 *  @param yearTo 西暦TO
-	 *  @param referUser　担当ユーザー
+	 *  @param referUserId　担当ユーザーID
 	 */
-	public CareerModel(String careerId,
+	public CareerModel(Id careerId,
 			String detail,
 			int yearStart,
 			int yearEnd,
-			UserModel referUser
+			String referUserId
 			) {
 		
 		// チェック
-		checkCareerId(careerId);
 		checkTerm(yearStart, yearEnd);
-		checkUserModel(referUser);
+		checkReferUserId(referUserId);
 		
 		this.careerId = careerId;
 		this.detail = detail;
 		this.yearStart = yearStart;
 		this.yearEnd = yearEnd;
-		this.referUser = referUser;
-	}
-	
-	/**
-	 *  経歴IDチェック
-	 *  @param careerId 経歴ID
-	 */
-	private void checkCareerId(String careerId) {
-		
-		String errMsglabel = "経歴ID";
-		// 必須チェック
-		if(careerId == null || careerId.length() == 0) {
-			throw new CareerPropertyNullException(errMsglabel);
-		}
+		this.referUserId = referUserId;
 	}
 	
 	/**
@@ -90,14 +76,14 @@ public class CareerModel {
 	}
 	
 	/**
-	 *  担当ユーザーチェック
-	 *  @param referUser 担当ユーザー
+	 *  担当ユーザーIDチェック
+	 *  @param referUser 担当ユーザーID
 	 */
-	private void checkUserModel(UserModel referUser) {
+	private void checkReferUserId(String referUserId) {
 		
-		String errMsglabel = "担当ユーザー";
+		String errMsglabel = "担当ユーザーID";
 		// 必須チェック
-		if(referUser == null) {
+		if(referUserId == null || referUserId.length() == 0) {
 			throw new CareerPropertyNullException(errMsglabel);
 		}
 	}
