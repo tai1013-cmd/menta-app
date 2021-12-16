@@ -1,8 +1,7 @@
-package menta.app.model.contract;
-
+package menta.app.model.signin;
 import lombok.Getter;
 
 @Getter
-public class TestModel {
+public class SigninModel {
 	private String test = "";
 }
