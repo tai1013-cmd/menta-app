@@ -37,19 +37,19 @@ public class CareerModel {
 	 */
 	public CareerModel(Id careerId,
 			String detail,
-			int yearStart,
-			int yearEnd,
+			int yearFrom,
+			int yearTo,
 			Id referUserId
 			) {
 		
 		// チェック
-		checkTerm(yearStart, yearEnd);
+		checkTerm(yearFrom, yearTo);
 		changeDetail(detail);
 		
 		this.careerId = careerId;
 		this.detail = detail;
-		this.yearFrom = yearStart;
-		this.yearTo = yearEnd;
+		this.yearFrom = yearFrom;
+		this.yearTo = yearTo;
 		this.referUserId = referUserId;
 	}
 	
