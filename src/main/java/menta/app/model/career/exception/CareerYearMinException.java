@@ -6,6 +6,6 @@ public class CareerYearMinException extends RuntimeException {
 	
 	public CareerYearMinException(int year){
 		
-		super("西暦（FROM〜TO）が最小年度より小さい(" + year  + ")");
+		super("西暦（FROM〜TO）が最小年度より小さいです(" + year  + ")");
 	}
 }

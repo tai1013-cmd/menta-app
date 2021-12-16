@@ -6,6 +6,6 @@ public class UserPropertyNullException extends RuntimeException {
 	
 	public UserPropertyNullException(String property){
 	
-		super(property + "：未設定");
+		super(property + "が設定されていません。");
 	}
 }

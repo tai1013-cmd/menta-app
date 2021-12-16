@@ -49,7 +49,7 @@ public class UserModel {
 	 *  メールアドレスを設定する
 	 *  @param mailadress メールアドレス
 	 */
-	public void setMailaddress(MailAddress mailadress) {
+	public void changeMailaddress(MailAddress mailadress) {
 		
 		this.mailadress = mailadress;
 	}
@@ -58,7 +58,7 @@ public class UserModel {
 	 *  パスワードを設定する
 	 *  @param mailadress メールアドレス
 	 */
-	public void setPassword(Password password) {
+	public void changePassword(Password password) {
 
 		this.password = password;
 	}
@@ -67,7 +67,7 @@ public class UserModel {
 	 *  氏名を設定する
 	 *  @param fullName 氏名
 	 */
-	public void setNameFull(FullName fullName) {
+	public void changeNameFull(FullName fullName) {
 		
 		this.fullName = fullName;
 	}
@@ -76,7 +76,7 @@ public class UserModel {
 	 *  自己紹介を設定する
 	 *  @param selfIntro 自己紹介
 	 */
-	public void setSelfIntro(String selfIntro) {
+	public void changeSelfIntro(String selfIntro) {
 		
 		// チェック
 		checkSelfIntro(selfIntro);

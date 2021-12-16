@@ -2,6 +2,8 @@ package menta.app.model.career;
 import java.time.LocalDate;
 
 import lombok.Getter;
+import menta.app.model.career.exception.CareerDetailMaxLengthException;
+import menta.app.model.career.exception.CareerDetailNullException;
 import menta.app.model.career.exception.CareerYearFromToRelationshipException;
 import menta.app.model.career.exception.CareerYearMaxException;
 import menta.app.model.career.exception.CareerYearMinException;
@@ -12,14 +14,18 @@ public class CareerModel {
 	
 	private Id careerId = null;
 	private String detail = "";
-	private Integer yearStart = null;
-	private Integer yearEnd = null;
+	private Integer yearFrom = null;
+	private Integer yearTo = null;
 	private Id referUserId = null;
 
 	/**
 	 * 西暦FROM：最小年度
 	 */
 	private final static Integer YEAR_FROM_MIN_VALUE = 1970;
+	/**
+	 * 詳細：最大文字数
+	 */
+	private static final Integer DETAIL_MAX_LENGTH = 1000;
 	
 	/**
 	 *  コンストラクタ
@@ -38,19 +44,35 @@ public class CareerModel {
 		
 		// チェック
 		checkTerm(yearStart, yearEnd);
+		changeDetail(detail);
 		
 		this.careerId = careerId;
 		this.detail = detail;
-		this.yearStart = yearStart;
-		this.yearEnd = yearEnd;
+		this.yearFrom = yearStart;
+		this.yearTo = yearEnd;
 		this.referUserId = referUserId;
 	}
 	
 	/**
-	 *  西暦チェック
+	 * 詳細を設定する
+	 * @param detail
+	 */
+	public void changeDetail(String detail) {
+		checkDetail(detail);
+		this.detail = detail;
+	}
+	
+	/**
+	 *  西暦を設定する
 	 *  @param yearFrom　西暦FROM
 	 *  @param yearTo 西暦TO
 	 */
+	public void changeDetail(int yearFrom, int yearTo) {
+		checkTerm(yearFrom, yearTo);
+		this.yearFrom = yearFrom;
+		this.yearTo = yearTo;
+	}
+	
 	private void checkTerm(int yearFrom, int yearTo) {
 		// 最小チェック
 		if(yearFrom < YEAR_FROM_MIN_VALUE) {
@@ -71,6 +93,17 @@ public class CareerModel {
 		if(yearTo > yearFrom) {
 			throw new CareerYearFromToRelationshipException(yearFrom, yearTo);
 		}
+	}
+	
+	private void checkDetail(String detail) {
+		
+		if(detail == null || detail.length() == 0) {
+			throw new CareerDetailNullException();
+		}
+		if(detail.length() > DETAIL_MAX_LENGTH) {
+			throw new CareerDetailMaxLengthException(detail);
+		}
+		
 	}
 
 }
