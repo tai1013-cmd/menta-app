@@ -39,7 +39,7 @@ public class ProposalModel {
 	 *  内容を設定する
 	 *  @param detail 内容
 	 */
-	public void setDetail(String detail) {
+	public void changeDetail(String detail) {
 		
 		// チェック
 		checkDetail(detail);
