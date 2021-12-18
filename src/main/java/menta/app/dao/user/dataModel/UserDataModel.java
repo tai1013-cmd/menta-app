@@ -1,4 +1,4 @@
-package menta.app.dao.user.entity;
+package menta.app.dao.user.dataModel;
 
 import java.time.LocalDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -11,7 +11,7 @@ import menta.app.model.user.UserModel;
  * ユーザーテーブルの情報を格納するクラス
  */
 @Data
-public class UserEntity implements java.io.Serializable {
+public class UserDataModel implements java.io.Serializable {
 
 	private static final long serialVersionUID = 5477469199667385053L;
 
@@ -66,13 +66,13 @@ public class UserEntity implements java.io.Serializable {
 	/**
 	 * コンストラクタ
 	 */
-	public UserEntity() {
+	public UserDataModel() {
 	}
 	
 	/**
 	 * コンストラクタ
 	 */
-	public UserEntity(UserModel userModel) {
+	public UserDataModel(UserModel userModel) {
 		this.id = userModel.getUserId().getId();
 		this.password = userModel.getPassword().toString();
 		this.mailaddress = userModel.getMailadress().toString();

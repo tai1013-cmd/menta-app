@@ -2,7 +2,7 @@ package menta.app.dao.user;
 
 import org.apache.ibatis.annotations.Param;
 
-import menta.app.dao.user.entity.UserEntity;
+import menta.app.dao.user.dataModel.UserDataModel;
 
 /**
  * ユーザマスタのDAOクラス
@@ -13,27 +13,27 @@ public interface UserDao {
 	 * 
 	 * @param userId ユーザID
 	 */
-	UserEntity selectOneByUserId(@Param("userId") String userId);
+	UserDataModel selectOneByUserId(@Param("userId") String userId);
 	
 	/**
 	 * ユーザテーブルからメールアドレスに紐付くユーザ情報を取得する
 	 * 
 	 * @param mailaddress メールアドレス
 	 */
-	UserEntity selectOneByMailAddress(@Param("mailaddress") String mailAddress);
+	UserDataModel selectOneByMailAddress(@Param("mailaddress") String mailAddress);
 
 	/**
 	 * ユーザテーブルに登録する
 	 * 
-	 * @param UserEntity ユーザエンティティ
+	 * @param UserDataModel ユーザデータモデル
 	 */
-	void insert(UserEntity userEntity);
+	void insert(UserDataModel userEntity);
 
 	/**
 	 * ユーザテーブルの更新する
 	 * 
-	 * @param UserEntity ユーザエンティティ
+	 * @param UserDataModel ユーザデータモデル
 	 */
-	void update(UserEntity userEntity);
+	void update(UserDataModel userEntity);
 
 }
