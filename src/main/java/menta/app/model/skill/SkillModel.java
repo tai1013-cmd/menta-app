@@ -4,13 +4,14 @@ import lombok.Getter;
 import menta.app.model.skill.exception.SkillLevelMaxException;
 import menta.app.model.skill.exception.SkillLevelMinException;
 import menta.app.model.skill.exception.SkillYearMinException;
-import menta.app.model.valueObject.Id;
+import menta.app.model.skill.valueObject.SkillId;
+import menta.app.model.tag.valueObject.TagId;
 
 @Getter
 public class SkillModel {
 	
-	private Id skillId = null;
-	private Id referTagId = null;
+	private SkillId skillId = null;
+	private TagId referTagId = null;
 	private Integer year = null;
 	private Integer level = null;
 	
@@ -30,8 +31,8 @@ public class SkillModel {
 	 *  @param year 年数
 	 *  @param level レベル
 	 */
-	public SkillModel(Id skillId,
-			Id referTagId,
+	public SkillModel(SkillId skillId,
+			TagId referTagId,
 			int year,
 			int level
 			) {

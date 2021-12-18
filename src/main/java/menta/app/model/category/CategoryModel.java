@@ -1,12 +1,12 @@
 package menta.app.model.category;
 import lombok.Getter;
 import menta.app.model.category.exception.CategoryNameNullException;
-import menta.app.model.valueObject.Id;
+import menta.app.model.category.valueObject.CategoryId;
 
 @Getter
 public class CategoryModel {
 	
-	private Id categoryId = null;
+	private CategoryId categoryId = null;
 	private String categoryName = "";
 	
 	/**
@@ -14,7 +14,7 @@ public class CategoryModel {
 	 *  @param categoryId タグID
 	 *  @param categoryName タグ名
 	 */
-	public CategoryModel(Id categoryId,
+	public CategoryModel(CategoryId categoryId,
 			String categoryName
 			) {
 		//チェック

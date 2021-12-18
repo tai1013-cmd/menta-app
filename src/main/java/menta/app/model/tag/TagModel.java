@@ -1,12 +1,12 @@
 package menta.app.model.tag;
 import lombok.Getter;
 import menta.app.model.tag.exception.TagNameNullException;
-import menta.app.model.valueObject.Id;
+import menta.app.model.tag.valueObject.TagId;
 
 @Getter
 public class TagModel {
 	
-	private Id tagId = null;
+	private TagId tagId = null;
 	private String tagName = "";
 	
 	/**
@@ -14,7 +14,7 @@ public class TagModel {
 	 *  @param tagId タグID
 	 *  @param tagName タグ名
 	 */
-	public TagModel(Id tagId,
+	public TagModel(TagId tagId,
 			String tagName
 			) {
 		

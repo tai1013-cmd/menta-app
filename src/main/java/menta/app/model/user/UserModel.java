@@ -2,20 +2,21 @@ package menta.app.model.user;
 import java.util.List;
 
 import lombok.Getter;
+import menta.app.model.skill.valueObject.SkillId;
 import menta.app.model.user.exception.UserPropertyMaxLengthException;
 import menta.app.model.user.valueObject.FullName;
 import menta.app.model.user.valueObject.MailAddress;
 import menta.app.model.user.valueObject.Password;
-import menta.app.model.valueObject.Id;
+import menta.app.model.user.valueObject.UserId;
 
 @Getter
 public class UserModel {
-	private Id userId = null;
+	private UserId userId = null;
 	private MailAddress mailadress = null;
 	private Password password = null;
 	private FullName fullName = null;
 	private String selfIntro = "";
-	private List<Id> skills = null;
+	private List<SkillId> skills = null;
 	
 	/**
 	 * 自己紹介：最大文字数
@@ -35,12 +36,12 @@ public class UserModel {
 	 *  @param selfIntro 自己紹介
 	 *  @param skills 参照スキルID一覧
 	 */
-	public UserModel(Id userId,
+	public UserModel(UserId userId,
 			MailAddress mailadress,
 			Password password,
 			FullName fullName,
 			String selfIntro,
-			List<Id> skills
+			List<SkillId> skills
 			) {
 		
 		// チェック
@@ -96,7 +97,7 @@ public class UserModel {
 	 *  スキルを設定する
 	 *  @param skills 参照スキルId一覧
 	 */
-	public void changeSkills(List<Id> skills) {
+	public void changeSkills(List<SkillId> skills) {
 		
 		this.skills = skills;
 	}

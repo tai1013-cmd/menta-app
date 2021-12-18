@@ -3,22 +3,24 @@ package menta.app.model.plan;
 import java.util.List;
 
 import lombok.Getter;
+import menta.app.model.category.valueObject.CategoryId;
 import menta.app.model.plan.exception.PlanApprovalNullException;
 import menta.app.model.plan.exception.PlanDetailMaxLengthException;
 import menta.app.model.plan.exception.PlanDetailNullException;
 import menta.app.model.plan.exception.PlanStatusNullException;
-import menta.app.model.valueObject.Id;
+import menta.app.model.plan.valueObject.PlanId;
+import menta.app.model.tag.valueObject.TagId;
 
 @Getter
 public class PlanModel {
 
-	private Id planId = null;
+	private PlanId planId = null;
 	private String title = "";
 	private String detail = "";
 	private Status status = null;
 	private Approval approval = null;
-	private Id referCategoryId = null;
-	private List<Id> referTagIdList = null;
+	private CategoryId referCategoryId = null;
+	private List<TagId> referTagIdList = null;
 
 	/**
 	 *  ステータス（相談可能、忙しい、表示しない）
@@ -53,13 +55,13 @@ public class PlanModel {
 	 *  @param referCategoryId 参照カテゴリーID
 	 *  @param referTagIdList 参照タグID
 	 */
-	public PlanModel(Id planId,
+	public PlanModel(PlanId planId,
 			String title,
 			String detail,
 			Status status,
 			Approval approval,
-			Id referCategoryId,
-			List<Id> referTagIdList
+			CategoryId referCategoryId,
+			List<TagId> referTagIdList
 			) {
 		//チェック
 		checkDetail(detail);

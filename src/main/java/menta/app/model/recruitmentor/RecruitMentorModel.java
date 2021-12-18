@@ -8,11 +8,12 @@ import menta.app.model.recruitmentor.exception.RecruitStatusNullException;
 import menta.app.model.recruitmentor.exception.RecruitTitleMaxLengthException;
 import menta.app.model.recruitmentor.exception.RecruitTitleNullException;
 import menta.app.model.recruitmentor.exception.RecruitTypeNullException;
+import menta.app.model.recruitmentor.valueObject.RecruitMentorId;
 
 @Getter
 public class RecruitMentorModel {
 
-	private String recruitMentorId = "";
+	private RecruitMentorId recruitMentorId = null;
 	private String title = "";
 	private String detail = "";
 	private Integer budget = null; 
@@ -60,7 +61,7 @@ public class RecruitMentorModel {
 	 *  @param type　タイプ
 	 *  @param status ステータス
 	 */
-	public RecruitMentorModel(String recruitMentorId,
+	public RecruitMentorModel(RecruitMentorId recruitMentorId,
 			String title,
 			String detail,
 			int budget,

@@ -8,7 +8,7 @@ import menta.app.model.career.exception.CareerYearFromToRelationshipException;
 import menta.app.model.career.exception.CareerYearMaxException;
 import menta.app.model.career.exception.CareerYearMinException;
 import menta.app.model.career.valueObject.CareerId;
-import menta.app.model.valueObject.Id;
+import menta.app.model.user.valueObject.UserId;
 
 @Getter
 public class CareerModel {
@@ -17,7 +17,7 @@ public class CareerModel {
 	private String detail = "";
 	private Integer yearFrom = null;
 	private Integer yearTo = null;
-	private Id referUserId = null;
+	private UserId referUserId = null;
 
 	/**
 	 * 西暦FROM：最小年度
@@ -40,7 +40,7 @@ public class CareerModel {
 			String detail,
 			int yearFrom,
 			int yearTo,
-			Id referUserId
+			UserId referUserId
 			) {
 		
 		// チェック
