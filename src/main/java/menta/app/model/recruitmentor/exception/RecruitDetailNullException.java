@@ -1,4 +1,4 @@
-package menta.app.model.recruit.exception;
+package menta.app.model.recruitmentor.exception;
 
 public class RecruitDetailNullException extends RuntimeException {
 

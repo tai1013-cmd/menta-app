@@ -7,7 +7,7 @@ import menta.app.model.plan.exception.PlanApprovalNullException;
 import menta.app.model.plan.exception.PlanDetailMaxLengthException;
 import menta.app.model.plan.exception.PlanDetailNullException;
 import menta.app.model.plan.exception.PlanStatusNullException;
-import menta.app.model.recruit.exception.RecruitDetailMaxLengthException;
+import menta.app.model.recruitMentor.exception.RecruitDetailMaxLengthException;
 import menta.app.model.valueObject.Id;
 
 @Getter

@@ -1,13 +1,13 @@
 package menta.app.model.recruitmentor;
 
 import lombok.Getter;
-import menta.app.model.recruit.exception.RecruitBudgetMinPriceException;
-import menta.app.model.recruit.exception.RecruitDetailMaxLengthException;
-import menta.app.model.recruit.exception.RecruitDetailNullException;
-import menta.app.model.recruit.exception.RecruitStatusNullException;
-import menta.app.model.recruit.exception.RecruitTitleMaxLengthException;
-import menta.app.model.recruit.exception.RecruitTitleNullException;
-import menta.app.model.recruit.exception.RecruitTypeNullException;
+import menta.app.model.recruitmentor.exception.RecruitBudgetMinPriceException;
+import menta.app.model.recruitmentor.exception.RecruitDetailMaxLengthException;
+import menta.app.model.recruitmentor.exception.RecruitDetailNullException;
+import menta.app.model.recruitmentor.exception.RecruitStatusNullException;
+import menta.app.model.recruitmentor.exception.RecruitTitleMaxLengthException;
+import menta.app.model.recruitmentor.exception.RecruitTitleNullException;
+import menta.app.model.recruitmentor.exception.RecruitTypeNullException;
 
 @Getter
 public class RecruitMentorModel {
