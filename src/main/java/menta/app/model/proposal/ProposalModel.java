@@ -1,8 +1,8 @@
 package menta.app.model.proposal;
 
 import lombok.Getter;
-import menta.app.model.suggest.exception.SuggestDetailMaxLengthException;
-import menta.app.model.suggest.exception.SuggestDetailNullException;
+import menta.app.model.proposal.exception.ProposalDetailMaxLengthException;
+import menta.app.model.proposal.exception.ProposalDetailNullException;
 import menta.app.model.valueObject.Id;
 
 @Getter
@@ -49,10 +49,10 @@ public class ProposalModel {
 	private void checkDetail(String detail) {
 		
 		if(detail == null || detail.length() == 0) {
-			throw new SuggestDetailNullException();
+			throw new ProposalDetailNullException();
 		}
 		if(detail.length() > DETAIL_MAX_LENGTH) {
-			throw new SuggestDetailMaxLengthException(detail);
+			throw new ProposalDetailMaxLengthException(detail);
 		}
 		
 	}
