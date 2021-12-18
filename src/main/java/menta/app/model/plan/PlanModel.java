@@ -4,8 +4,10 @@ import java.util.List;
 
 import lombok.Getter;
 import menta.app.model.plan.exception.PlanApprovalNullException;
+import menta.app.model.plan.exception.PlanDetailMaxLengthException;
 import menta.app.model.plan.exception.PlanDetailNullException;
 import menta.app.model.plan.exception.PlanStatusNullException;
+import menta.app.model.recruit.exception.RecruitDetailMaxLengthException;
 import menta.app.model.valueObject.Id;
 
 @Getter
@@ -16,7 +18,7 @@ public class PlanModel {
 	private String detail = "";
 	private Status status = null;
 	private Approval approval = null;
-    private Id referCategoryId = null;
+	private Id referCategoryId = null;
 	private List<Id> referTagIdList = null;
 
 	/**
@@ -27,7 +29,7 @@ public class PlanModel {
 		BUSY,
 		NOT_OPEN
 	};
-	
+
 	/**
 	 *  契約承認（承認する、承認しない）
 	 */
@@ -35,6 +37,11 @@ public class PlanModel {
 		APPROVE,
 		NOT_APPROVE
 	};
+	
+	/**
+	 * 詳細：最大文字数
+	 */
+	private static final Integer DETAIL_MAX_LENGTH = 2000;
 	
 	/**
 	 *  コンストラクタ
@@ -59,6 +66,7 @@ public class PlanModel {
 		checkDetail(detail);
 		
 		this.planId = planId;
+		this.title = title;
 		this.detail = detail;
 		this.status = status;
 		this.approval = approval;
@@ -98,6 +106,9 @@ public class PlanModel {
 		
 		if(detail == null || detail.length() == 0) {
 			throw new PlanDetailNullException();
+		}
+		if(detail.length() > DETAIL_MAX_LENGTH) {
+			throw new PlanDetailMaxLengthException(detail);
 		}
 		
 	}

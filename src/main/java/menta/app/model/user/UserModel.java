@@ -1,5 +1,8 @@
 package menta.app.model.user;
+import java.util.List;
+
 import lombok.Getter;
+import menta.app.model.skill.SkillModel;
 import menta.app.model.user.exception.UserPropertyMaxLengthException;
 import menta.app.model.user.exception.UserPropertyNullException;
 import menta.app.model.user.valueObject.FullName;
@@ -19,7 +22,11 @@ public class UserModel {
 	 * 自己紹介：最大文字数
 	 */
 	private final static Integer INTRODUCTION_MAX_LENGTH = 2000;
-
+	/**
+	 * メンター募集に提案可能なスキル数 
+	 */
+	private final static Integer PROPOSAL_FOR_MENTA_MIN_SKILL_NUM = 5;
+	
 	/**
 	 *  コンストラクタ
 	 *  @param userId ユーザーID
@@ -81,6 +88,17 @@ public class UserModel {
 		// チェック
 		checkSelfIntro(selfIntro);
 		this.selfIntro = selfIntro;
+	}
+	
+	/**
+	 *  メンター募集に提案可能か
+	 *  @return true:提案可能 
+	 */
+	public boolean isProposalForMenterRecruit(List<SkillModel> skills) {
+		if(skills != null && skills.size() >= PROPOSAL_FOR_MENTA_MIN_SKILL_NUM) {
+			return true;
+		}
+		return false;
 	}
 	
 	/**
