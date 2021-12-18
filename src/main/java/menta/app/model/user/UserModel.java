@@ -2,9 +2,7 @@ package menta.app.model.user;
 import java.util.List;
 
 import lombok.Getter;
-import menta.app.model.skill.SkillModel;
 import menta.app.model.user.exception.UserPropertyMaxLengthException;
-import menta.app.model.user.exception.UserPropertyNullException;
 import menta.app.model.user.valueObject.FullName;
 import menta.app.model.user.valueObject.MailAddress;
 import menta.app.model.user.valueObject.Password;
@@ -17,6 +15,7 @@ public class UserModel {
 	private Password password = null;
 	private FullName fullName = null;
 	private String selfIntro = "";
+	private List<Id> skills = null;
 	
 	/**
 	 * 自己紹介：最大文字数
@@ -34,12 +33,14 @@ public class UserModel {
 	 *  @param password パスワード
 	 *  @param fullName 氏名（姓・名）
 	 *  @param selfIntro 自己紹介
+	 *  @param skills 参照スキルID一覧
 	 */
 	public UserModel(Id userId,
 			MailAddress mailadress,
 			Password password,
 			FullName fullName,
-			String selfIntro
+			String selfIntro,
+			List<Id> skills
 			) {
 		
 		// チェック
@@ -50,6 +51,7 @@ public class UserModel {
 		this.password = password;
 		this.fullName = fullName;
 		this.selfIntro = selfIntro;
+		this.skills = skills;
 	}
 	
 	/**
@@ -91,10 +93,19 @@ public class UserModel {
 	}
 	
 	/**
+	 *  スキルを設定する
+	 *  @param skills 参照スキルId一覧
+	 */
+	public void changeSkills(List<Id> skills) {
+		
+		this.skills = skills;
+	}
+	
+	/**
 	 *  メンター募集に提案可能か
 	 *  @return true:提案可能 
 	 */
-	public boolean isProposalForMenterRecruit(List<SkillModel> skills) {
+	public boolean isProposalForMenterRecruit() {
 		if(skills != null && skills.size() >= PROPOSAL_FOR_MENTA_MIN_SKILL_NUM) {
 			return true;
 		}
