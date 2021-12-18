@@ -9,6 +9,13 @@ import menta.app.dao.user.entity.UserEntity;
  */
 public interface UserDao {
 	/**
+	 * ユーザテーブルからユーザIDに紐付くユーザ情報を取得する
+	 * 
+	 * @param userId ユーザID
+	 */
+	UserEntity selectOneByUserId(@Param("userId") String userId);
+	
+	/**
 	 * ユーザテーブルからメールアドレスに紐付くユーザ情報を取得する
 	 * 
 	 * @param mailaddress メールアドレス
