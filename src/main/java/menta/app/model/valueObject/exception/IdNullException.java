@@ -5,7 +5,7 @@ public class IdNullException extends RuntimeException {
 private static final long serialVersionUID = 1L; 
 	
 	public IdNullException(){
-		super("ID：未設定");
+		super("IDが設定されていません。");
 	}
 	
 }

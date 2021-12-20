@@ -6,6 +6,6 @@ public class CareerYearMaxException extends RuntimeException {
 	
 	public CareerYearMaxException(int year){
 		
-		super("西暦（FROM〜TO）が現在年度より大きい(" + year  + ")");
+		super("西暦（FROM〜TO）が現在年度より大きいです(" + year  + ")");
 	}
 }

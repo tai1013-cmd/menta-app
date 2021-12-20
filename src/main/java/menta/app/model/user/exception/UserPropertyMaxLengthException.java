@@ -6,7 +6,7 @@ public class UserPropertyMaxLengthException extends RuntimeException {
 	
 	public UserPropertyMaxLengthException(String key, String value){
 		
-		super(key + "(" + value +  ")" +"：最大文字数を超えている");
+		super(key + "(" + value +  ")が最大文字数を超えています。");
 	}
 	
 }

@@ -6,7 +6,7 @@ public class UserPropertyMinLengthException extends RuntimeException {
 	
 	public UserPropertyMinLengthException(String key, String value){
 	
-		super(key + "(" + value +  ")" +"：最小文字数より少ない");
+		super(key + "(" + value +  ")が最小文字数より少ないです。");
 	}
 	
 }
