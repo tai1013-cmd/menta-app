@@ -1,0 +1,70 @@
+<!--?xml version="1.0" encoding="UTF-8" ? -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="menta.app.dao.recruitMentor.RecruitMentorDao">
+  <select id="selectList" resultType="menta.app.dao.recruitMentor.dataModel.ProposalDataModel">
+    select * 
+    from proposals
+    order by createdAt desc
+  </select>
+  
+  <select id="selectListByUserId" resultType="menta.app.dao.recruitMentor.dataModel.ProposalDataModel">
+    select * 
+    from proposals
+    where referUserId = #{referUserId}
+    order by createdAt desc
+  </select>
+
+  <select id="selectOneByProposalId" resultType="menta.app.dao.recruitMentor.dataModel.ProposalDataModel">
+    select * 
+    from proposals 
+    where id = #{proposalId}
+  </select>
+  
+  <insert id="insert">
+    insert into proposals(
+    id,
+    title,
+    detail,
+    budget,
+    status,
+    type,
+    referUserId,
+    createdAt,
+    updatedAt,
+    isDeleted
+    )
+    values(
+    #{id},
+    #{title},
+    #{datail},
+    #{budget},
+    #{status},
+    #{type},
+    #{referUserId},
+    #{createdAt},
+    #{updatedAt},
+    false
+    )
+  </insert>
+  
+  <update id="update">
+    update proposals set
+    title = #{title},
+    detail = #{detail},
+    budget = #{budget},
+    status = #{status},
+    type = #{type},
+    referUserId = #{referUserId},
+    updated_at = #{updatedAt},
+    where id = #{id}
+  </update>
+  
+  <update id="delete">
+    update proposals set
+    updated_at = #{updatedAt},
+    isDelete = true,
+    where id = #{id}
+  </update>
+  
+</mapper>
+
