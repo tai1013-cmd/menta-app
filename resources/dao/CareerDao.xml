@@ -1,0 +1,57 @@
+<!--?xml version="1.0" encoding="UTF-8" ? -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="menta.app.dao.plan.PlanDao">
+  <select id="selectListByUserId" resultType="menta.app.dao.plan.dataModel.PlanDataModel">
+    select * 
+    from plans
+    where referUserId = #{referUserId}
+  </select>
+
+  <select id="selectOneByPlanId" resultType="menta.app.dao.plan.dataModel.PlanDataModel">
+    select * 
+    from plans 
+    where id = #{planId}
+  </select>
+  
+  <insert id="insert">
+    insert into plans(
+    id,
+    detail,
+    yearFrom,
+    yearTo,
+    referUserId,
+    createdAt,
+    updatedAt,
+    isDeleted
+    )
+    values(
+    #{id},
+    #{detail},
+    #{yearFrom},
+    #{yearTo},
+    #{referUserId},
+    #{createdAt},
+    #{updatedAt},
+    false
+    )
+  </insert>
+  
+  <update id="update">
+    update plans set
+    detail = #{detail},
+    yearFrom = #{yearFrom},
+    yearTo = #{yearTo},
+    referUserId = #{referUserId},
+    updated_at = #{updatedAt},
+    where id = #{id}
+  </update>
+  
+  <update id="delete">
+    update plans set
+    updated_at = #{updatedAt},
+    isDelete = true,
+    where id = #{id}
+  </update>
+  
+</mapper>
+
