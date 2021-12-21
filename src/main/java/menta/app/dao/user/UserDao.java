@@ -39,8 +39,8 @@ public interface UserDao {
 	/**
 	 * ユーザテーブルを削除する
 	 * 
-	 * @param userDataModel ユーザデータモデル
+	 * @param userId ユーザID
 	 */
-	void delete(UserDataModel userDataModel);
+	void delete(@Param("userId") String userId);
 
 }

@@ -38,8 +38,8 @@ public interface PlanDao {
 	/**
 	 * プランテーブルを論理削除する
 	 * 
-	 * @param planDataModel プランデータモデル
+	 * @param planId プランID
 	 */
-	void delete(PlanDataModel planDataModel);
+	void delete(@Param("planId") String planId);
 	
 }

@@ -41,10 +41,10 @@ public interface CareerDao {
 	void update(CareerDataModel careerDataModel);
 	
 	/**
-	 * 経歴テーブルを論理削除する
+	 * 経歴テーブルを物理削除する
 	 * 
-	 * @param careerDataModel 経歴データモデル
+	 * @param careerId 経歴ID
 	 */
-	void delete(CareerDataModel careerDataModel);
+	void delete(@Param("careerId") String careerId);
 	
 }

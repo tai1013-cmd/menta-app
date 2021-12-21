@@ -41,8 +41,8 @@ public interface TagDao {
 	/**
 	 * タグテーブルを論理削除する
 	 * 
-	 * @param tagDataModel タグデータモデル
+	 * @param tagId タグID
 	 */
-	void d(TagDataModel tagDataModel);
+	void delete(@Param("tagId") String tagId);
 	
 }

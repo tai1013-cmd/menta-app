@@ -48,8 +48,8 @@ public interface ProposalDao {
 	/**
 	 * メンター提案テーブルを論理削除する
 	 * 
-	 * @param proposalDataModel 提案データモデル
+	 * @param proposalId 提案ID
 	 */
-	void delete(ProposalDataModel proposalDataModel);
+	void delete(@Param("proposalId") String proposalId);
 	
 }

@@ -39,10 +39,10 @@ public interface CatagoryDao {
 	void update(CategoryDataModel categoryDataModel);
 	
 	/**
-	 * カテゴリーテーブルの論理削除する
+	 * カテゴリーテーブルの物理削除する
 	 * 
-	 * @param categoryDataModel カテゴリーデータモデル
+	 * @param categoryId カテゴリーID
 	 */
-	void delete(CategoryDataModel categoryDataModel);
+	void delete(@Param("categoryId") String categoryId);
 	
 }

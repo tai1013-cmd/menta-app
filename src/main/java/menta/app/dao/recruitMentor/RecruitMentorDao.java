@@ -43,8 +43,8 @@ public interface RecruitMentorDao {
 	/**
 	 * メンター募集テーブルを論理削除する
 	 * 
-	 * @param recruitMentorDataModel メンター募集データモデル
+	 * @param recruitMentorId メンター募集ID
 	 */
-	void delete(RecruitMentorDataModel recruitMentorDataModel);
+	void delete(@Param("recruitMentorId") String recruitMentorId);
 	
 }

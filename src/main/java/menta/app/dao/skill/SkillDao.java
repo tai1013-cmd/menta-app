@@ -41,8 +41,8 @@ public interface SkillDao {
 	/**
 	 * スキルテーブルを論理削除する
 	 * 
-	 * @param careerDataModel スキルデータモデル
+	 * @param skillId スキルID
 	 */
-	void delete(CareerDataModel careerDataModel);
+	void delete(@Param("skillId") String skillId);
 	
 }
