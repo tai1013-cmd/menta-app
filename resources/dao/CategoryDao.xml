@@ -2,7 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="menta.app.dao.category.CategoryDao">
   <select id="selectList" resultType="menta.app.dao.category.dataModel.CategoryDataModel">
-    select * 
+    select id,
+      name,
+      createdAt,
+      updatedAt,
+      isDeleted
     from categorys
   </select>
 

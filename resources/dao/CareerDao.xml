@@ -2,7 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="menta.app.dao.plan.PlanDao">
   <select id="selectListByUserId" resultType="menta.app.dao.plan.dataModel.PlanDataModel">
-    select * 
+    select id,
+      detail,
+      yearFrom,
+      yearTo,
+      referUserId,
+      createdAt,
+      updatedAt,
+      isDeleted
     from plans
     where referUserId = #{referUserId}
   </select>
