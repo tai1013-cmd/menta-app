@@ -41,16 +41,15 @@
     referTagId = #{referTagId},
     year = #{year},
     level = #{level},
-    updated_at = #{updatedAt},
+    updatedAt = #{updatedAt}
     where id = #{id}
   </update>
   
-  <update id="delete">
-    update skills set
-    updated_at = #{updatedAt},
-    isDelete = true,
-    where id = #{id}
-  </update>
+  <delete id="delete">
+    delete
+    from skills
+    where id = #{skillId}
+  </delete>
   
 </mapper>
 

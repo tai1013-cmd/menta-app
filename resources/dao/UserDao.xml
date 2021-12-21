@@ -4,7 +4,7 @@
   <select id="selectOneByMailAddress" resultType="com.example.entity.UserEntity">
     select * 
     from users 
-    where mail_address = #{mailaddress}
+    where mailaddress = #{mailaddress}
   </select>
 
   <select id="selectOneByUserId" resultType="com.example.entity.UserEntity">
@@ -45,16 +45,15 @@
     mailaddress = #{mailaddress},
     password = #{password},
     selfIntro = #{selfIntro},
-    updated_at = #{updatedAt},
+    updatedAt = #{updatedAt}
     where id = #{id}
   </update>
   
-  <update id="delete">
-    update users set
-    updated_at = #{updatedAt},
-    isDelete = true,
-    where id = #{id}
-  </update>
+  <delete id="delete">
+    delete 
+    from users
+    where id = #{userId}
+  </delete>
   
 </mapper>
 

@@ -6,7 +6,7 @@
     select referUserId, max(createdAt)
     from plans
     where status != 'NOT_OPEN'
-    grouping by referUserId
+    group by referUserId
     order by max(createdAt) desc
   </select>
   
@@ -61,16 +61,15 @@
     referCategoryId = #{referCategoryId},
     referTagId = #{referTagId},
     referUserId = #{referUserId},
-    updated_at = #{updatedAt},
+    updatedAt = #{updatedAt}
     where id = #{id}
   </update>
   
-  <update id="delete">
-    update plans set
-    updated_at = #{updatedAt},
-    isDelete = true,
-    where id = #{id}
-  </update>
+  <delete id="delete">
+    delete
+    from plans 
+    where id = #{planId}
+  </delete>
   
 </mapper>
 

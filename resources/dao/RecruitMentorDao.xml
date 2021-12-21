@@ -55,16 +55,15 @@
     status = #{status},
     type = #{type},
     referUserId = #{referUserId},
-    updated_at = #{updatedAt},
+    updatedAt = #{updatedAt}
     where id = #{id}
   </update>
   
-  <update id="delete">
-    update proposals set
-    updated_at = #{updatedAt},
-    isDelete = true,
-    where id = #{id}
-  </update>
+  <delete id="delete">
+    delete
+    from proposals
+    where id = #{proposalId}
+  </delete>
   
 </mapper>
 

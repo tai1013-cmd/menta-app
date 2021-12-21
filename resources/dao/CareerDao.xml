@@ -42,16 +42,15 @@
     yearFrom = #{yearFrom},
     yearTo = #{yearTo},
     referUserId = #{referUserId},
-    updated_at = #{updatedAt},
+    updatedAt = #{updatedAt}
     where id = #{id}
   </update>
   
-  <update id="delete">
-    update plans set
-    updated_at = #{updatedAt},
-    isDelete = true,
-    where id = #{id}
-  </update>
+  <delete id="delete">
+    delete 
+    from plans 
+    where id = #{planId}
+  </delete>
   
 </mapper>
 

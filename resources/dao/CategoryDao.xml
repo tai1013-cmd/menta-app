@@ -32,16 +32,15 @@
   <update id="update">
     update categorys set
     name = #{name},
-    updated_at = #{updatedAt},
+    updatedAt = #{updatedAt}
     where id = #{id}
   </update>
   
-  <update id="delete">
-    update categorys set
-    updated_at = #{updatedAt},
-    isDelete = true,
-    where id = #{id}
-  </update>
+  <delete id="delete">
+    delete
+    from categorys
+    where id = #{categoryId}
+  </delete>
   
 </mapper>
 
