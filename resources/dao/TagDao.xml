@@ -1,0 +1,47 @@
+<!--?xml version="1.0" encoding="UTF-8" ? -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="menta.app.dao.tag.TagDao">
+  <select id="selectList" resultType="menta.app.dao.tag.dataModel.TagDataModel">
+    select * 
+    from tags
+  </select>
+
+  <select id="selectOneByTagId" resultType="menta.app.dao.tag.dataModel.TagDataModel">
+    select * 
+    from tags 
+    where id = #{tagId}
+  </select>
+  
+  <insert id="insert">
+    insert into tags(
+    id,
+    name,
+    createdAt,
+    updatedAt,
+    isDeleted
+    )
+    values(
+    #{id},
+    #{name},
+    #{createdAt},
+    #{updatedAt},
+    false
+    )
+  </insert>
+  
+  <update id="update">
+    update tags set
+    name = #{name},
+    updated_at = #{updatedAt},
+    where id = #{id}
+  </update>
+  
+  <update id="delete">
+    update tags set
+    updated_at = #{updatedAt},
+    isDelete = true,
+    where id = #{id}
+  </update>
+  
+</mapper>
+
