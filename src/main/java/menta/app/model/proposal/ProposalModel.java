@@ -5,12 +5,13 @@ import menta.app.model.plan.valueObject.PlanId;
 import menta.app.model.proposal.exception.ProposalDetailMaxLengthException;
 import menta.app.model.proposal.exception.ProposalDetailNullException;
 import menta.app.model.proposal.valueObject.ProposalId;
+import menta.app.model.recruitmentor.valueObject.RecruitMentorId;
 
 @Getter
 public class ProposalModel {
 	
 	private ProposalId proposalId = null;
-	private PlanId referPlanId = null;
+	private RecruitMentorId referRecruitMentorId = null;
 	private String detail = "";
 	
 	/**
@@ -21,18 +22,18 @@ public class ProposalModel {
 	/**
 	 *  コンストラクタ
 	 *  @param proposalId 提案ID
-	 *  @param referPlanId 参照プランID
+	 *  @param referRecruitMentorId 参照メンター募集ID
 	 *  @param detail 内容
 	 */
 	public ProposalModel(ProposalId proposalId,
-			PlanId referPlanId,
+			RecruitMentorId referRecruitMentorId,
 			String detail
 			) {
 		//チェック
 		checkDetail(detail);
 		
 		this.proposalId = proposalId;
-		this.referPlanId = referPlanId;
+		this.referRecruitMentorId = referRecruitMentorId;
 		this.detail = detail;
 	}
 	
