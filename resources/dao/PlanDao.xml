@@ -3,7 +3,7 @@
 <mapper namespace="menta.app.dao.plan.PlanDao">
 
   <select id="selectUserIdListOrderByCreatedDesc" resultType="String">
-    select referUserId, max(createdAt)
+    select referUserId
     from plans
     where status != 'NOT_OPEN'
     group by referUserId
