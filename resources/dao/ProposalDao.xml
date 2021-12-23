@@ -1,19 +1,19 @@
 <!--?xml version="1.0" encoding="UTF-8" ? -->
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="menta.app.dao.proposal.RecruitMentorDao">
-  <select id="selectOneByRecruitMentorId" resultType="menta.app.dao.proposal.dataModel.ProposalMentorDataModel">
+<mapper namespace="menta.app.dao.proposal.ProposalDao">
+  <select id="selectOneByRecruitMentorId" resultType="menta.app.dao.proposal.dataModel.ProposalDataModel">
     select * 
     from proposals
     where referRecruitMentorId = #{referRecruitMentorId}
   </select>
   
-  <select id="selectOneByUserId" resultType="menta.app.dao.proposal.dataModel.ProposalMentorDataModel">
+  <select id="selectOneByUserId" resultType="menta.app.dao.proposal.dataModel.ProposalDataModel">
     select * 
     from proposals
     where referUserId = #{referUserId}
   </select>
 
-  <select id="selectOneByRecruitMentorId" resultType="menta.app.dao.proposal.dataModel.ProposalMentorDataModel">
+  <select id="selectOneByProposalId" resultType="menta.app.dao.proposal.dataModel.ProposalDataModel">
     select * 
     from proposals 
     where id = #{proposalId}

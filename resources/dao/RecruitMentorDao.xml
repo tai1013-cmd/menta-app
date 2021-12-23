@@ -1,27 +1,27 @@
 <!--?xml version="1.0" encoding="UTF-8" ? -->
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="menta.app.dao.recruitMentor.RecruitMentorDao">
-  <select id="selectList" resultType="menta.app.dao.recruitMentor.dataModel.ProposalDataModel">
+  <select id="selectList" resultType="menta.app.dao.recruitMentor.dataModel.RecruitMentorDataModel">
     select * 
-    from proposals
+    from recruitMentors
     order by createdAt desc
   </select>
   
-  <select id="selectListByUserId" resultType="menta.app.dao.recruitMentor.dataModel.ProposalDataModel">
+  <select id="selectListByUserId" resultType="menta.app.dao.recruitMentor.dataModel.RecruitMentorDataModel">
     select * 
-    from proposals
+    from recruitMentors
     where referUserId = #{referUserId}
     order by createdAt desc
   </select>
 
-  <select id="selectOneByProposalId" resultType="menta.app.dao.recruitMentor.dataModel.ProposalDataModel">
+  <select id="selectOneByRecruitMentorId" resultType="menta.app.dao.recruitMentor.dataModel.RecruitMentorDataModel">
     select * 
-    from proposals 
-    where id = #{proposalId}
+    from recruitMentors 
+    where id = #{recruitMentorId}
   </select>
   
   <insert id="insert">
-    insert into proposals(
+    insert into recruitMentors(
     id,
     title,
     detail,
@@ -48,7 +48,7 @@
   </insert>
   
   <update id="update">
-    update proposals set
+    update recruitMentors set
     title = #{title},
     detail = #{detail},
     budget = #{budget},
@@ -61,8 +61,8 @@
   
   <delete id="delete">
     delete
-    from proposals
-    where id = #{proposalId}
+    from recruitMentors
+    where id = #{recruitMentorId}
   </delete>
   
 </mapper>

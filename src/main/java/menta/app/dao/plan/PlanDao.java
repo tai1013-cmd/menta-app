@@ -12,7 +12,7 @@ public interface PlanDao {
 	 * プラン公開しているユーザーID一覧を取得する（新着順）
 	 * 
 	 */
-	List<String> selectUserIdListOrderByCreatedDesc();
+	List<String> selectUserIdListCreatedDesc();
 	
 	/**
 	 * プランIDに紐付くプラン情報を取得する

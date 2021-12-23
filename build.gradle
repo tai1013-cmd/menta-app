@@ -1,25 +1,56 @@
 plugins {
 	id 'org.springframework.boot' version '2.1.6.RELEASE'
 	id 'java'
+	// MyBatis Generatorプラグイン
+    id "com.thinkimi.gradle.MybatisGenerator" version "2.1.2"
 }
 
 apply plugin: 'io.spring.dependency-management'
 sourceCompatibility = '1.8'
 
 repositories {
-	mavenCentral()
+	jcenter()
 }
 
 bootJar{
     launchScript() 
 }
 
+mybatisGenerator {
+    verbose = true
+    // 設定ファイル
+    configFile = "src/main/resources/generatorConfig.xml"
+
+    dependencies {
+        mybatisGenerator 'com.itfsw:mybatis-generator-plugin:1.3.7'
+        mybatisGenerator 'org.mybatis.generator:mybatis-generator-core:1.3.7'
+        mybatisGenerator 'org.postgresql:postgresql'
+    }
+}
+
+configurations {
+    mybatisGenerator
+}
+
 dependencies {
+    compile 'org.springframework.boot:spring-boot-devtools'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
     annotationProcessor "org.projectlombok:lombok:1.18.8"  
     compile('org.projectlombok:lombok:1.18.8')
-    runtime('mysql:mysql-connector-java')
 	compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.0')
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testCompile("org.junit.jupiter:junit-jupiter-api:5.3.1")
-    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.1")
+    runtimeOnly 'org.postgresql:postgresql'
+	implementation platform('org.springframework.boot:spring-boot-dependencies:2.1.6.RELEASE')
+	
+	testImplementation 'org.junit.platform:junit-platform-surefire-provider:1.3.2'
+	testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.6.2'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
+	// MyBatisとPostgreSQL
+    implementation  'org.mybatis.generator:mybatis-generator-core:1.3.7'
+    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.1.3'
+    testImplementation 'com.h2database:h2:1.4.200'
+	
+	
+	
 }

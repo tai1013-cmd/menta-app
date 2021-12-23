@@ -1,7 +1,7 @@
 <!--?xml version="1.0" encoding="UTF-8" ? -->
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="menta.app.dao.plan.PlanDao">
-  <select id="selectListByUserId" resultType="menta.app.dao.plan.dataModel.PlanDataModel">
+<mapper namespace="menta.app.dao.career.CareerDao">
+  <select id="selectListByUserId" resultType="menta.app.dao.career.dataModel.CareerDataModel">
     select id,
       detail,
       yearFrom,
@@ -10,18 +10,18 @@
       createdAt,
       updatedAt,
       isDeleted
-    from plans
+    from careers
     where referUserId = #{referUserId}
   </select>
 
-  <select id="selectOneByPlanId" resultType="menta.app.dao.plan.dataModel.PlanDataModel">
+  <select id="selectOneByCareerId" resultType="menta.app.dao.career.dataModel.CareerDataModel">
     select * 
-    from plans 
-    where id = #{planId}
+    from careers 
+    where id = #{careerId}
   </select>
   
   <insert id="insert">
-    insert into plans(
+    insert into careers(
     id,
     detail,
     yearFrom,
@@ -44,7 +44,7 @@
   </insert>
   
   <update id="update">
-    update plans set
+    update careers set
     detail = #{detail},
     yearFrom = #{yearFrom},
     yearTo = #{yearTo},
@@ -55,7 +55,7 @@
   
   <delete id="delete">
     delete 
-    from plans 
+    from careers 
     where id = #{planId}
   </delete>
   

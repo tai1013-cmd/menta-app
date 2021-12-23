@@ -4,13 +4,13 @@ import java.time.LocalDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
-import lombok.Data;
+import lombok.Getter;
 import menta.app.model.user.UserModel;
 
 /**
  * ユーザーテーブルの情報を格納するクラス
  */
-@Data
+@Getter
 public class UserDataModel implements java.io.Serializable {
 
 	private static final long serialVersionUID = 5477469199667385053L;
@@ -72,13 +72,15 @@ public class UserDataModel implements java.io.Serializable {
 	/**
 	 * コンストラクタ
 	 */
-	public UserDataModel(UserModel userModel) {
+	public UserDataModel(UserModel userModel, LocalDateTime createdAt , LocalDateTime updatedAt) {
 		this.id = userModel.getUserId().getId();
 		this.password = userModel.getPassword().toString();
 		this.mailaddress = userModel.getMailadress().toString();
 		this.sei = userModel.getFullName().getSei();
 		this.mei = userModel.getFullName().getMei();
 		this.selfIntro = userModel.getSelfIntro();
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
 	}
 
 }
