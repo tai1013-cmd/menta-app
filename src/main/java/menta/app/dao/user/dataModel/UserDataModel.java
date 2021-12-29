@@ -61,7 +61,7 @@ public class UserDataModel implements java.io.Serializable {
 	/**
 	 * 削除フラグ
 	 */
-	private int isDeleted = 0;
+	private boolean isDeleted = false;
 
 	/**
 	 * コンストラクタ
@@ -74,8 +74,8 @@ public class UserDataModel implements java.io.Serializable {
 	 */
 	public UserDataModel(UserModel userModel, LocalDateTime createdAt , LocalDateTime updatedAt) {
 		this.id = userModel.getUserId().getId();
-		this.password = userModel.getPassword().toString();
-		this.mailaddress = userModel.getMailadress().toString();
+		this.password = userModel.getPassword().getPassword();
+		this.mailaddress = userModel.getMailadress().getMailadress();
 		this.sei = userModel.getFullName().getSei();
 		this.mei = userModel.getFullName().getMei();
 		this.selfIntro = userModel.getSelfIntro();

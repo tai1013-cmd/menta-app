@@ -60,7 +60,7 @@ public class ProposalDataModel implements java.io.Serializable {
 		this.id = proposalModel.getProposalId().getId();
 		this.detail = proposalModel.getDetail();
 		this.referRecruitMentorId = proposalModel.getReferRecruitMentorId().getId();
-		this.referUserId = referUserId.getId().toString();
+		this.referUserId = referUserId.getId();
 	}
 	
 }

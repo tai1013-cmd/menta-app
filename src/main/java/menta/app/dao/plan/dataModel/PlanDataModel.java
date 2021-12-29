@@ -77,12 +77,12 @@ public class PlanDataModel implements java.io.Serializable {
 	 * @param referUserId 参照ユーザーID
 	 */
 	public PlanDataModel(PlanModel planModel, UserId referUserId) {
-		this.id = planModel.getPlanId().toString();
+		this.id = planModel.getPlanId().getId();
 		this.title = planModel.getTitle();
 		this.detail = planModel.getDetail();
 		this.status = planModel.getStatus().name();
 		this.approval = planModel.getApproval().name();
-		this.referCategoryId = planModel.getReferCategoryId().toString();
-		this.referUserId = referUserId.getId().toString();
+		this.referCategoryId = planModel.getReferCategoryId().getId();
+		this.referUserId = referUserId.getId();
 	}
 }

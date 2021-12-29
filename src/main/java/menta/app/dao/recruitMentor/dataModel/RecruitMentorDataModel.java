@@ -78,7 +78,7 @@ public class RecruitMentorDataModel implements java.io.Serializable {
 		this.budget = proposalModel.getBudget();
 		this.type = proposalModel.getType().name();
 		this.status = proposalModel.getStatus().name();
-		this.referUserId = referUserId.getId().toString();
+		this.referUserId = referUserId.getId();
 	}
 	
 }

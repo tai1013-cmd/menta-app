@@ -62,10 +62,10 @@ public class SkillDataModel implements java.io.Serializable {
 	 * @param referUserId 参照ユーザーID
 	 */
 	public SkillDataModel(SkillModel skillModel, UserId referUserId) {
-		this.id = skillModel.getSkillId().toString();
-		this.referTagId = skillModel.getReferTagId().toString();
+		this.id = skillModel.getSkillId().getId();
+		this.referTagId = skillModel.getReferTagId().getId();
 		this.year = skillModel.getYear();
 		this.level = skillModel.getLevel();
-		this.referUserId = referUserId.getId().toString();
+		this.referUserId = referUserId.getId();
 	}
 }
