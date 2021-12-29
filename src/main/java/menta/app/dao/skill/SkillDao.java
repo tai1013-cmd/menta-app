@@ -2,11 +2,13 @@ package menta.app.dao.skill;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import menta.app.dao.career.dataModel.CareerDataModel;
 import menta.app.dao.skill.dataModel.SkillDataModel;
 
+@Mapper
 public interface SkillDao {
 
 	/**

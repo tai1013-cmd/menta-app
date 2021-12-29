@@ -1,5 +1,6 @@
 package menta.app.dao.user;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import menta.app.dao.user.dataModel.UserDataModel;
@@ -7,6 +8,7 @@ import menta.app.dao.user.dataModel.UserDataModel;
 /**
  * ユーザマスタのDAOクラス
  */
+@Mapper
 public interface UserDao {
 	/**
 	 * ユーザIDに紐付くユーザ情報を取得する
@@ -20,7 +22,7 @@ public interface UserDao {
 	 * 
 	 * @param mailaddress メールアドレス
 	 */
-	UserDataModel selectOneByMailAddress(@Param("mailaddress") String mailAddress);
+	UserDataModel selectOneByMailAddress(@Param("mailaddress") String mailaddress);
 
 	/**
 	 * ユーザテーブルに登録する

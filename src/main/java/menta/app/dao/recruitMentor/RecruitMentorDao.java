@@ -2,6 +2,7 @@ package menta.app.dao.recruitMentor;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import menta.app.dao.recruitMentor.dataModel.RecruitMentorDataModel;
@@ -9,6 +10,7 @@ import menta.app.dao.recruitMentor.dataModel.RecruitMentorDataModel;
 /**
  * メンター募集マスタのDAOクラス
  */
+@Mapper
 public interface RecruitMentorDao {
 	
 	/**

@@ -2,10 +2,12 @@ package menta.app.dao.plan;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import menta.app.dao.plan.dataModel.PlanDataModel;
 
+@Mapper
 public interface PlanDao {
 
 	/**

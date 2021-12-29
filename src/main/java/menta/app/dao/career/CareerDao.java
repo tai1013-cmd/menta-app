@@ -2,6 +2,7 @@ package menta.app.dao.career;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import menta.app.dao.career.dataModel.CareerDataModel;
@@ -9,6 +10,7 @@ import menta.app.dao.career.dataModel.CareerDataModel;
 /**
  * 経歴テーブルのDAOクラス
  */
+@Mapper
 public interface CareerDao {
 	
 	/**

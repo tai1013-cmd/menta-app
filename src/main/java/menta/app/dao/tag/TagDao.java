@@ -2,6 +2,7 @@ package menta.app.dao.tag;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import menta.app.dao.tag.dataModel.TagDataModel;
@@ -9,6 +10,7 @@ import menta.app.dao.tag.dataModel.TagDataModel;
 /**
  * タグマスタのDAOクラス
  */
+@Mapper
 public interface TagDao {
 	
 	/**

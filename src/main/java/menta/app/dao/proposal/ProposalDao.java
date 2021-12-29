@@ -1,5 +1,6 @@
 package menta.app.dao.proposal;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import menta.app.dao.proposal.dataModel.ProposalDataModel;
@@ -7,6 +8,7 @@ import menta.app.dao.proposal.dataModel.ProposalDataModel;
 /**
  * メンター提案マスタのDAOクラス
  */
+@Mapper
 public interface ProposalDao {
 
 	/**

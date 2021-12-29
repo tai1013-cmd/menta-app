@@ -2,6 +2,7 @@ package menta.app.dao.category;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import menta.app.dao.category.dataModel.CategoryDataModel;
@@ -9,6 +10,7 @@ import menta.app.dao.category.dataModel.CategoryDataModel;
 /**
  * カテゴリーマスタのDAOクラス
  */
+@Mapper
 public interface CatagoryDao {
 
 	/**
