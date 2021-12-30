@@ -34,13 +34,6 @@ public interface CareerDao {
 	 * @param careerDataModel 経歴データモデル
 	 */
 	void insert(CareerDataModel careerDataModel);
-
-	/**
-	 * 経歴テーブルを更新する
-	 * 
-	 * @param careerDataModel 経歴データモデル
-	 */
-	void update(CareerDataModel careerDataModel);
 	
 	/**
 	 * 経歴テーブルを物理削除する

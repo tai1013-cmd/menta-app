@@ -34,13 +34,6 @@ public interface SkillDao {
 	void insert(SkillDataModel skillDataModel);
 
 	/**
-	 * スキルテーブルを更新する
-	 * 
-	 * @param careerDataModel スキルデータモデル
-	 */
-	void update(SkillDataModel skillDataModel);
-	
-	/**
 	 * スキルテーブルを論理削除する
 	 * 
 	 * @param skillId スキルID

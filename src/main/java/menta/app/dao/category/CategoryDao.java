@@ -34,13 +34,6 @@ public interface CategoryDao {
 	void insert(CategoryDataModel categoryDataModel);
 	
 	/**
-	 * カテゴリーテーブルの更新する
-	 * 
-	 * @param categoryDataModel カテゴリーデータモデル
-	 */
-	void update(CategoryDataModel categoryDataModel);
-	
-	/**
 	 * カテゴリーテーブルの物理削除する
 	 * 
 	 * @param categoryId カテゴリーID
