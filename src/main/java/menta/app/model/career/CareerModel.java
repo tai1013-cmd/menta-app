@@ -91,7 +91,7 @@ public class CareerModel {
 			throw new CareerYearMaxException(yearTo);
 		}
 		// 大小チェック
-		if(yearTo > yearFrom) {
+		if(yearTo < yearFrom) {
 			throw new CareerYearFromToRelationshipException(yearFrom, yearTo);
 		}
 	}

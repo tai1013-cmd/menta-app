@@ -4,9 +4,7 @@
   <select id="selectList" resultType="menta.app.dao.category.dataModel.CategoryDataModel">
     select id,
       name,
-      createdAt,
-      updatedAt,
-      isDeleted
+      createdAt
     from categorys
   </select>
 
@@ -20,25 +18,14 @@
     insert into categorys(
     id,
     name,
-    createdAt,
-    updatedAt,
-    isDeleted
+    createdAt
     )
     values(
     #{id},
     #{name},
-    #{createdAt},
-    #{updatedAt},
-    false
+    #{createdAt}
     )
   </insert>
-  
-  <update id="update">
-    update categorys set
-    name = #{name},
-    updatedAt = #{updatedAt}
-    where id = #{id}
-  </update>
   
   <delete id="delete">
     delete

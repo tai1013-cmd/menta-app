@@ -73,10 +73,10 @@ public class SkillModel {
 	}
 	
 	private void checkLevel(int level) {
-		if(year < LEVEL_MIN) {
+		if(level < LEVEL_MIN) {
 			throw new SkillLevelMinException(level);
 		}
-		if(year > LEVEL_MAX) {
+		if(level > LEVEL_MAX) {
 			throw new SkillLevelMaxException(level);
 		}
 	}

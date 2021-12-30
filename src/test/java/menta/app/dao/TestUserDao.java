@@ -39,7 +39,7 @@ public class TestUserDao {
 		// 実行（新規登録）
 		userDao.insert(insertUserDataModel);
 		
-		// 実行（メールアドレスで検索）
+		// 実行（検索）
 		UserDataModel getUserDataModelByMail =  userDao.selectOneByMailAddress(insertUserDataModel.getMailaddress());
 		
 		assertNotNull(getUserDataModelByMail.getId());
@@ -64,7 +64,7 @@ public class TestUserDao {
 		UserDataModel updateUserDataModel = setUpdateData(getUserDataModelByMail);
 		userDao.update(updateUserDataModel);
 		
-		// 実行（IDで検索）
+		// 実行（検索）
 		UserDataModel getUserDataModelById =  userDao.selectOneByUserId(insertUserDataModel.getId());
 		
 		assertEquals(updateUserDataModel.getId(), getUserDataModelById.getId());
@@ -76,7 +76,7 @@ public class TestUserDao {
 		assertEquals(updateUserDataModel.getCreatedAt(), getUserDataModelById.getCreatedAt());
 		assertEquals(updateUserDataModel.getUpdatedAt(), getUserDataModelById.getUpdatedAt());
 
-		// 実行（IDで削除）
+		// 実行（削除）
 		userDao.delete(insertUserDataModel.getId());
 		UserDataModel delUserDataModelById =  userDao.selectOneByUserId(insertUserDataModel.getId());
 		assertNull(delUserDataModelById);

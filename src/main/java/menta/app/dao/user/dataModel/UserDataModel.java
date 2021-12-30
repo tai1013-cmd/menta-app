@@ -59,14 +59,10 @@ public class UserDataModel implements java.io.Serializable {
 	private LocalDateTime updatedAt;
 
 	/**
-	 * 削除フラグ
-	 */
-	private boolean isDeleted = false;
-
-	/**
 	 * コンストラクタ
 	 */
 	public UserDataModel() {
+		
 	}
 	
 	/**

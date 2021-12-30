@@ -30,20 +30,18 @@
     type,
     referUserId,
     createdAt,
-    updatedAt,
-    isDeleted
+    updatedAt
     )
     values(
     #{id},
     #{title},
-    #{datail},
+    #{detail},
     #{budget},
     #{status},
     #{type},
     #{referUserId},
     #{createdAt},
-    #{updatedAt},
-    false
+    #{updatedAt}
     )
   </insert>
   

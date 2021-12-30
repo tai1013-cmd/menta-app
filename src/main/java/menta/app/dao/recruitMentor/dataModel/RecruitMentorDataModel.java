@@ -60,18 +60,17 @@ public class RecruitMentorDataModel implements java.io.Serializable {
 	 */
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime updatedAt;
-
-	/**
-	 * 削除フラグ
-	 */
-	private int isDeleted = 0;
+	
+	public RecruitMentorDataModel() {
+		
+	}
 	
 	/**
 	 * コンストラクタ
 	 * @param proposalModel メンター募集モデル
 	 * @param referUserId 参照ユーザーID
 	 */
-	public RecruitMentorDataModel(RecruitMentorModel proposalModel, UserId referUserId) {
+	public RecruitMentorDataModel(RecruitMentorModel proposalModel, UserId referUserId, LocalDateTime createdAt, LocalDateTime updatedAt) {
 		this.id = proposalModel.getRecruitMentorId().getId();
 		this.title = proposalModel.getTitle();
 		this.detail = proposalModel.getDetail();
@@ -79,6 +78,8 @@ public class RecruitMentorDataModel implements java.io.Serializable {
 		this.type = proposalModel.getType().name();
 		this.status = proposalModel.getStatus().name();
 		this.referUserId = referUserId.getId();
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
 	}
 	
 }

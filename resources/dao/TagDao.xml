@@ -4,9 +4,7 @@
   <select id="selectList" resultType="menta.app.dao.tag.dataModel.TagDataModel">
     select id,
       name,
-      createdAt,
-      updatedAt,
-      isDeleted 
+      createdAt
     from tags
   </select>
 
@@ -20,25 +18,14 @@
     insert into tags(
     id,
     name,
-    createdAt,
-    updatedAt,
-    isDeleted
+    createdAt
     )
     values(
     #{id},
     #{name},
-    #{createdAt},
-    #{updatedAt},
-    false
+    #{createdAt}
     )
   </insert>
-  
-  <update id="update">
-    update tags set
-    name = #{name},
-    updatedAt = #{updatedAt}
-    where id = #{id}
-  </update>
   
   <delete id="delete">
     delete

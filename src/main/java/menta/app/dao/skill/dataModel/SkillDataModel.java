@@ -44,28 +44,21 @@ public class SkillDataModel implements java.io.Serializable {
 	 */
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime createdAt;
-
-	/**
-	 * レコード更新日時
-	 */
-	@DateTimeFormat(iso = ISO.DATE_TIME)
-	private LocalDateTime updatedAt;
-
-	/**
-	 * 削除フラグ
-	 */
-	private int isDeleted = 0;
+	
+	public SkillDataModel() {
+	}
 	
 	/**
 	 * コンストラクタ
 	 * @param skillModel スキルモデル
 	 * @param referUserId 参照ユーザーID
 	 */
-	public SkillDataModel(SkillModel skillModel, UserId referUserId) {
+	public SkillDataModel(SkillModel skillModel, UserId referUserId, LocalDateTime createdAt) {
 		this.id = skillModel.getSkillId().getId();
 		this.referTagId = skillModel.getReferTagId().getId();
 		this.year = skillModel.getYear();
 		this.level = skillModel.getLevel();
 		this.referUserId = referUserId.getId();
+		this.createdAt = createdAt;
 	}
 }

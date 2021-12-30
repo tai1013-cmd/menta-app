@@ -45,22 +45,23 @@ public class ProposalDataModel implements java.io.Serializable {
 	 */
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime updatedAt;
-
-	/**
-	 * 削除フラグ
-	 */
-	private int isDeleted = 0;
+	
+	public ProposalDataModel() {
+		
+	}
 	
 	/**
 	 * コンストラクタ
 	 * @param proposalModel 提案モデル
 	 * @param referUserId 参照ユーザーID
 	 */
-	public ProposalDataModel(ProposalModel proposalModel, UserId referUserId) {
+	public ProposalDataModel(ProposalModel proposalModel, UserId referUserId, LocalDateTime createdAt, LocalDateTime updatedAt) {
 		this.id = proposalModel.getProposalId().getId();
 		this.detail = proposalModel.getDetail();
 		this.referRecruitMentorId = proposalModel.getReferRecruitMentorId().getId();
 		this.referUserId = referUserId.getId();
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
 	}
 	
 }

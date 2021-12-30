@@ -1,7 +1,6 @@
 package menta.app.model.proposal;
 
 import lombok.Getter;
-import menta.app.model.plan.valueObject.PlanId;
 import menta.app.model.proposal.exception.ProposalDetailMaxLengthException;
 import menta.app.model.proposal.exception.ProposalDetailNullException;
 import menta.app.model.proposal.valueObject.ProposalId;

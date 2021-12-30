@@ -59,30 +59,25 @@ public class PlanDataModel implements java.io.Serializable {
 	 */
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime createdAt;
-
-	/**
-	 * レコード更新日時
-	 */
-	@DateTimeFormat(iso = ISO.DATE_TIME)
-	private LocalDateTime updatedAt;
-
-	/**
-	 * 削除フラグ
-	 */
-	private int isDeleted = 0;
+	
+	public PlanDataModel() {
+		
+	}
 	
 	/**
 	 * コンストラクタ
 	 * @param planModel プランモデル
 	 * @param referUserId 参照ユーザーID
 	 */
-	public PlanDataModel(PlanModel planModel, UserId referUserId) {
+	public PlanDataModel(PlanModel planModel, UserId referUserId, LocalDateTime createdAt) {
 		this.id = planModel.getPlanId().getId();
 		this.title = planModel.getTitle();
 		this.detail = planModel.getDetail();
 		this.status = planModel.getStatus().name();
 		this.approval = planModel.getApproval().name();
+		this.referTagId = planModel.getReferTagIdList().get(0).getId();
 		this.referCategoryId = planModel.getReferCategoryId().getId();
 		this.referUserId = referUserId.getId();
+		this.createdAt = createdAt;
 	}
 }

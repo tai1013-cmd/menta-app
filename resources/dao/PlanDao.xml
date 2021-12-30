@@ -11,7 +11,15 @@
   </select>
   
   <select id="selectListByUserId" resultType="menta.app.dao.plan.dataModel.PlanDataModel">
-    select * 
+    select id,
+      title,
+      detail,
+      status,
+      approval,
+      referCategoryId,
+      referTagId,
+      referUserId,
+      createdAt
     from plans
     where referUserId = #{referUserId}
     order by createdAt desc
@@ -33,9 +41,7 @@
     referCategoryId,
     referTagId,
     referUserId,
-    createdAt,
-    updatedAt,
-    isDeleted
+    createdAt
     )
     values(
     #{id},
@@ -46,24 +52,9 @@
     #{referCategoryId},
     #{referTagId},
     #{referUserId},
-    #{createdAt},
-    #{updatedAt},
-    false
+    #{createdAt}
     )
   </insert>
-  
-  <update id="update">
-    update plans set
-    title = #{title}
-    detail = #{detail},
-    status = #{status},
-    approval = #{approval},
-    referCategoryId = #{referCategoryId},
-    referTagId = #{referTagId},
-    referUserId = #{referUserId},
-    updatedAt = #{updatedAt}
-    where id = #{id}
-  </update>
   
   <delete id="delete">
     delete

@@ -14,6 +14,12 @@ import menta.app.dao.recruitMentor.dataModel.RecruitMentorDataModel;
 public interface RecruitMentorDao {
 	
 	/**
+	 * メンター募集情報一覧を取得する
+	 * 
+	 */
+	List<RecruitMentorDataModel> selectList();
+	
+	/**
 	 * ユーザIDに紐づくメンター募集情報一覧を取得する
 	 * 
 	 * @param referUserId 参照ユーザーID

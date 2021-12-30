@@ -24,21 +24,21 @@ public interface SkillDao {
 	 * 
 	 * @param skillId　スキルID
 	 */
-	List<SkillDataModel> selectOneBySkillId(@Param("skillId") String skillId);
+	SkillDataModel selectOneBySkillId(@Param("skillId") String skillId);
 	
 	/**
 	 * スキルテーブルに登録する
 	 * 
 	 * @param careerDataModel スキルデータモデル
 	 */
-	void insert(CareerDataModel careerDataModel);
+	void insert(SkillDataModel skillDataModel);
 
 	/**
 	 * スキルテーブルを更新する
 	 * 
 	 * @param careerDataModel スキルデータモデル
 	 */
-	void update(CareerDataModel careerDataModel);
+	void update(SkillDataModel skillDataModel);
 	
 	/**
 	 * スキルテーブルを論理削除する

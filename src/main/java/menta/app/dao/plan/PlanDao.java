@@ -24,18 +24,18 @@ public interface PlanDao {
 	PlanDataModel selectOneByPlanId(@Param("planId") String planId);
 	
 	/**
+	 * ユーザーIDに紐付くプラン情報を取得する
+	 * 
+	 * @param userId ユーザーID
+	 */
+	List<PlanDataModel> selectListByUserId(@Param("referUserId") String referUserId);
+	
+	/**
 	 * プランテーブルに登録する
 	 * 
 	 * @param planDataModel プランデータモデル
 	 */
 	void insert(PlanDataModel planDataModel);
-	
-	/**
-	 * プランテーブルの更新する
-	 * 
-	 * @param planDataModel プランデータモデル
-	 */
-	void update(PlanDataModel planDataModel);
 	
 	/**
 	 * プランテーブルを論理削除する

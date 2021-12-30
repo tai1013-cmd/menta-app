@@ -46,28 +46,22 @@ public class CareerDataModel implements java.io.Serializable {
 	 */
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime createdAt;
-
-	/**
-	 * レコード更新日時
-	 */
-	@DateTimeFormat(iso = ISO.DATE_TIME)
-	private LocalDateTime updatedAt;
-
-	/**
-	 * 削除フラグ
-	 */
-	private int isDeleted = 0;
+	
+	public CareerDataModel() {
+		
+	}
 	
 	/**
 	 * コンストラクタ
 	 * @param careerModel 経歴モデル
 	 */
-	public CareerDataModel(CareerModel careerModel) {
+	public CareerDataModel(CareerModel careerModel, LocalDateTime createdAt) {
 		this.id = careerModel.getCareerId().getId();
 		this.detail = careerModel.getDetail();
 		this.yearFrom = careerModel.getYearFrom();
 		this.yearTo = careerModel.getYearTo();
 		this.referUserId = careerModel.getReferUserId().getId();
+		this.createdAt = createdAt;
 	}
 	
 }

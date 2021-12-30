@@ -16,16 +16,7 @@ public interface ProposalDao {
 	 * 
 	 * @param referRecruitMentorId 参照メンター募集ID
 	 */
-	ProposalDataModel selectOneByRecruitMentorId(@Param("referRecruitMentorId") String referRecruitMentorId);
-
-	/**
-	 * ユーザーIDに紐付くメンター提案情報を取得する
-	 * 
-	 * @param referUserId 参照ユーザーID
-	 */
-	ProposalDataModel selectOneByUserId(@Param("referUserId") String referUserId);
-	
-	
+	ProposalDataModel selectOneByRecruitMentorId(@Param("referRecruitMentorId") String referRecruitMentorId);	
 	/**
 	 * 提案IDに紐付く提案情報を取得する
 	 * 

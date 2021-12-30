@@ -6,12 +6,6 @@
     from users 
     where mailaddress = #{mailaddress}
   </select>
-
-  <select id="selectOneByUserId" resultType="menta.app.dao.user.dataModel.UserDataModel">
-    select * 
-    from users 
-    where id = #{userId}
-  </select>
   
   <insert id="insert">
     insert into users(

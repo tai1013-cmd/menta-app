@@ -28,25 +28,19 @@ public class CategoryDataModel implements java.io.Serializable {
 	 */
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime createdAt;
-
-	/**
-	 * レコード更新日時
-	 */
-	@DateTimeFormat(iso = ISO.DATE_TIME)
-	private LocalDateTime updatedAt;
-
-	/**
-	 * 削除フラグ
-	 */
-	private int isDeleted = 0;
 	
+	public CategoryDataModel() {
+		
+	}
+
 	/**
 	 * コンストラクタ
 	 * @param categoryModel カテゴリーモデル
 	 */
-	public CategoryDataModel(CategoryModel categoryModel) {
+	public CategoryDataModel(CategoryModel categoryModel, LocalDateTime createdAt) {
 		this.id = categoryModel.getCategoryId().getId();
 		this.name = categoryModel.getCategoryName();
+		this.createdAt = createdAt;
 	}
 	
 }

@@ -31,25 +31,22 @@ public class TagDataModel implements java.io.Serializable {
 	 */
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime createdAt;
-
+	
 	/**
-	 * レコード更新日時
+	 * コンストラクタ
 	 */
-	@DateTimeFormat(iso = ISO.DATE_TIME)
-	private LocalDateTime updatedAt;
-
-	/**
-	 * 削除フラグ
-	 */
-	private int isDeleted = 0;
+	public TagDataModel() {
+	}
 	
 	/**
 	 * コンストラクタ
 	 * @param tagModel タグモデル
+	 * @param createdAt 作成日時
 	 */
-	public TagDataModel(TagModel tagModel) {
+	public TagDataModel(TagModel tagModel, LocalDateTime createdAt) {
 		this.id = tagModel.getTagId().getId();
 		this.name = tagModel.getTagName();
+		this.createdAt = createdAt;
 	}
 	
 }

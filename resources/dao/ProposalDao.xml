@@ -6,12 +6,6 @@
     from proposals
     where referRecruitMentorId = #{referRecruitMentorId}
   </select>
-  
-  <select id="selectOneByUserId" resultType="menta.app.dao.proposal.dataModel.ProposalDataModel">
-    select * 
-    from proposals
-    where referUserId = #{referUserId}
-  </select>
 
   <select id="selectOneByProposalId" resultType="menta.app.dao.proposal.dataModel.ProposalDataModel">
     select * 
@@ -26,8 +20,7 @@
     referRecruitMentorId,
     referUserId,
     createdAt,
-    updatedAt,
-    isDeleted
+    updatedAt
     )
     values(
     #{id},
@@ -35,8 +28,7 @@
     #{referRecruitMentorId},
     #{referUserId},
     #{createdAt},
-    #{updatedAt},
-    false
+    #{updatedAt}
     )
   </insert>
   

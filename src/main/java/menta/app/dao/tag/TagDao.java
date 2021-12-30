@@ -34,13 +34,6 @@ public interface TagDao {
 	void insert(TagDataModel tagDataModel);
 	
 	/**
-	 * タグテーブルの更新する
-	 * 
-	 * @param tagDataModel タグデータモデル
-	 */
-	void update(TagDataModel tagDataModel);
-	
-	/**
 	 * タグテーブルを論理削除する
 	 * 
 	 * @param tagId タグID
