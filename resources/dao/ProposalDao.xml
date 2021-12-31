@@ -1,0 +1,51 @@
+<!--?xml version="1.0" encoding="UTF-8" ? -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="menta.app.dao.proposal.ProposalDao">
+  <select id="selectOneByRecruitMentorId" resultType="menta.app.dao.proposal.dataModel.ProposalDataModel">
+    select * 
+    from proposals
+    where referRecruitMentorId = #{referRecruitMentorId}
+  </select>
+
+  <select id="selectOneByProposalId" resultType="menta.app.dao.proposal.dataModel.ProposalDataModel">
+    select * 
+    from proposals 
+    where id = #{proposalId}
+  </select>
+  
+  <insert id="insert">
+    insert into proposals(
+    id,
+    detail,
+    referRecruitMentorId,
+    referUserId,
+    createdAt,
+    updatedAt
+    )
+    values(
+    #{id},
+    #{detail},
+    #{referRecruitMentorId},
+    #{referUserId},
+    #{createdAt},
+    #{updatedAt}
+    )
+  </insert>
+  
+  <update id="update">
+    update proposals set
+    detail = #{detail},
+    referRecruitMentorId = #{referRecruitMentorId},
+    referUserId = #{referUserId},
+    updatedAt = #{updatedAt}
+    where id = #{id}
+  </update>
+  
+  <delete id="delete">
+    delete
+    from proposals
+    where id = #{proposalId}
+  </delete>
+  
+</mapper>
+

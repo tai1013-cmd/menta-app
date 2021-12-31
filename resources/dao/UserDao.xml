@@ -1,16 +1,10 @@
 <!--?xml version="1.0" encoding="UTF-8" ? -->
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="menta.app.dao.user.UserDao">
-  <select id="selectOneByMailAddress" resultType="com.example.entity.UserEntity">
+  <select id="selectOneByMailAddress" resultType="menta.app.dao.user.dataModel.UserDataModel">
     select * 
     from users 
-    where mail_address = #{mailaddress}
-  </select>
-
-  <select id="selectOneByUserId" resultType="com.example.entity.UserEntity">
-    select * 
-    from users 
-    where id = #{userId}
+    where mailaddress = #{mailaddress}
   </select>
   
   <insert id="insert">
@@ -26,7 +20,7 @@
     isDeleted
     )
     values(
-    #{userId},
+    #{id},
     #{sei},
     #{mei},
     #{mailaddress},
@@ -45,9 +39,15 @@
     mailaddress = #{mailaddress},
     password = #{password},
     selfIntro = #{selfIntro},
-    updated_at = #{updatedAt}
-    where id = #{userId}
+    updatedAt = #{updatedAt}
+    where id = #{id}
   </update>
+  
+  <delete id="delete">
+    delete 
+    from users
+    where id = #{userId}
+  </delete>
   
 </mapper>
 

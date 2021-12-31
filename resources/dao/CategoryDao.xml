@@ -1,0 +1,37 @@
+<!--?xml version="1.0" encoding="UTF-8" ? -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="menta.app.dao.category.CategoryDao">
+  <select id="selectList" resultType="menta.app.dao.category.dataModel.CategoryDataModel">
+    select id,
+      name,
+      createdAt
+    from categorys
+  </select>
+
+  <select id="selectOneByCategoryId" resultType="menta.app.dao.category.dataModel.CategoryDataModel">
+    select * 
+    from categorys 
+    where id = #{categoryId}
+  </select>
+  
+  <insert id="insert">
+    insert into categorys(
+    id,
+    name,
+    createdAt
+    )
+    values(
+    #{id},
+    #{name},
+    #{createdAt}
+    )
+  </insert>
+  
+  <delete id="delete">
+    delete
+    from categorys
+    where id = #{categoryId}
+  </delete>
+  
+</mapper>
+

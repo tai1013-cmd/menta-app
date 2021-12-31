@@ -1,0 +1,47 @@
+<!--?xml version="1.0" encoding="UTF-8" ? -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="menta.app.dao.skill.SkillDao">
+  <select id="selectListByUserId" resultType="menta.app.dao.skill.dataModel.SkillDataModel">
+    select id,
+      year,
+      level,
+      referTagId,
+      referUserId,
+      createdAt
+    from skills
+    where referUserId = #{referUserId}
+  </select>
+
+  <select id="selectOneBySkillId" resultType="menta.app.dao.skill.dataModel.SkillDataModel">
+    select * 
+    from skills 
+    where id = #{skillId}
+  </select>
+  
+  <insert id="insert">
+    insert into skills(
+    id,
+    year,
+    level,
+    referTagId,
+    referUserId,
+    createdAt
+    )
+    values(
+    #{id},
+    #{referTagId},
+    #{year},
+    #{level},
+    #{referUserId},
+    #{createdAt}
+    )
+  </insert>
+  
+  <delete id="delete">
+    delete
+    from skills
+    where id = #{skillId}
+  </delete>
+  
+</mapper>
+

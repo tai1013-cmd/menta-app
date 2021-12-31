@@ -1,0 +1,47 @@
+<!--?xml version="1.0" encoding="UTF-8" ? -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="menta.app.dao.career.CareerDao">
+  <select id="selectListByUserId" resultType="menta.app.dao.career.dataModel.CareerDataModel">
+    select id,
+      detail,
+      yearFrom,
+      yearTo,
+      referUserId,
+      createdAt
+    from careers
+    where referUserId = #{referUserId}
+  </select>
+
+  <select id="selectOneByCareerId" resultType="menta.app.dao.career.dataModel.CareerDataModel">
+    select * 
+    from careers 
+    where id = #{careerId}
+  </select>
+  
+  <insert id="insert">
+    insert into careers(
+    id,
+    detail,
+    yearFrom,
+    yearTo,
+    referUserId,
+    createdAt
+    )
+    values(
+    #{id},
+    #{detail},
+    #{yearFrom},
+    #{yearTo},
+    #{referUserId},
+    #{createdAt}
+    )
+  </insert>
+  
+  <delete id="delete">
+    delete 
+    from careers 
+    where id = #{careerId}
+  </delete>
+  
+</mapper>
+

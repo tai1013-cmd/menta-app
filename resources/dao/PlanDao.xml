@@ -1,0 +1,66 @@
+<!--?xml version="1.0" encoding="UTF-8" ? -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="menta.app.dao.plan.PlanDao">
+
+  <select id="selectUserIdListCreatedDesc" resultType="String">
+    select referUserId
+    from plans
+    where status != 'NOT_OPEN'
+    group by referUserId
+    order by max(createdAt) desc
+  </select>
+  
+  <select id="selectListByUserId" resultType="menta.app.dao.plan.dataModel.PlanDataModel">
+    select id,
+      title,
+      detail,
+      status,
+      approval,
+      referCategoryId,
+      referTagId,
+      referUserId,
+      createdAt
+    from plans
+    where referUserId = #{referUserId}
+    order by createdAt desc
+  </select>
+
+  <select id="selectOneByPlanId" resultType="menta.app.dao.plan.dataModel.PlanDataModel">
+    select * 
+    from plans 
+    where id = #{planId}
+  </select>
+  
+  <insert id="insert">
+    insert into plans(
+    id,
+    title,
+    detail,
+    status,
+    approval,
+    referCategoryId,
+    referTagId,
+    referUserId,
+    createdAt
+    )
+    values(
+    #{id},
+    #{title},
+    #{detail},
+    #{status},
+    #{approval},
+    #{referCategoryId},
+    #{referTagId},
+    #{referUserId},
+    #{createdAt}
+    )
+  </insert>
+  
+  <delete id="delete">
+    delete
+    from plans 
+    where id = #{planId}
+  </delete>
+  
+</mapper>
+
